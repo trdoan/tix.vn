@@ -10,10 +10,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import logo from "../../img/11.png";
 // css
 import "./Header.scss";
+import { Link, NavLink } from "react-router-dom";
+import SignInPage from "../../pages/dang-nhap/dang-nhap.page";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    background: "white",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-
+  console.log("render header");
   return (
     <div className={classes.root}>
       <AppBar position="static" className="header">
@@ -41,17 +44,26 @@ export default function Header() {
             className={classes.logo_website}
           />
           <div className="navbar__header">
-            <Typography variant="h6" className={classes.title}>
-              Trang chủ
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Chi tiết phim
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Booking
-            </Typography>
+            <Link to="/" className="nav-link-item" exact="true">
+              <Typography variant="h6" className={classes.title}>
+                Trang chủ
+              </Typography>
+            </Link>
+            <Link to="/chi-tiet-phim" exact="true" className="nav-link-item">
+              <Typography variant="h6" className={classes.title}>
+                Chi tiết phim
+              </Typography>
+            </Link>
+            <Link to="/dat-ve" extract="true" className="nav-link-item">
+              <Typography variant="h6" className={classes.title}>
+                Booking
+              </Typography>
+            </Link>
           </div>
-          <Button color="inherit">Login</Button>
+          <Link to="/dang-nhap" exact="true" className="nav-link-item">
+            {/* <SignInPage /> */}
+            <Typography>LOGIN</Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
