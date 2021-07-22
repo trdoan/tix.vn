@@ -11,31 +11,32 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    marginTop: 20,
   },
   media: {
-    height: 140,
+    height: 400,
+    maxHeight: 400,
   },
 });
 
-export default function MovieCard() {
+export default function MovieCard(props) {
   const classes = useStyles();
-
+  const { tenPhim, moTa, hinhAnh } = props.movie;
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={hinhAnh}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {tenPhim}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          {/* <Typography variant="body2" color="textSecondary" component="p">
+            {moTa}
+          </Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>

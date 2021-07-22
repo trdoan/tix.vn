@@ -7,11 +7,11 @@ export const commonReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOADING_ON:
-      state.isLoading = true;
-      return { ...state };
+      // state.isLoading = true;
+      return { ...state, isLoading: true };
     case LOADING_OFF:
-      state.isLoading = false;
-      return { ...state };
+      // state.isLoading = false;
+      return { ...state, isLoading: false };
     default:
       return state;
   }
