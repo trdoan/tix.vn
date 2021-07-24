@@ -7,7 +7,8 @@ export const getListMovieAction = () => {
     dispatch(loadingOnAction());
     try {
       const res = await axios({
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP10",
+        url:
+          "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP07",
         method: "GET",
       });
       console.log("Movie list:", res.data);

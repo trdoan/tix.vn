@@ -24,13 +24,13 @@ function HomePage() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
-    // slidesToScroll: 2,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     slidesPerRow: 2,
     rows: 1,
     arrows: true,
     centerMode: true,
-    centerPadding: "0",
+    centerPadding: -15,
   };
 
   // render danh sách phim
@@ -38,7 +38,7 @@ function HomePage() {
     return listMovie.map((movie, index) => {
       return (
         // <div className="col-12 col-sm-6 col-lg-3">
-        <MovieCard movie={movie} />
+        <MovieCard key={index} movie={movie} />
         // </div>
       );
     });
@@ -46,10 +46,10 @@ function HomePage() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className="container">
-      <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
-      {/* <div className="row"></div> */}
-    </div>
+    <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
+    // <div className="container">
+
+    // </div>
   );
 }
 
