@@ -27,10 +27,10 @@ function HomePage() {
     slidesToShow: 4,
     slidesToScroll: 4,
     slidesPerRow: 2,
-    rows: 1,
+    // rows: 1,
     arrows: true,
-    centerMode: true,
-    centerPadding: -15,
+    // centerMode: true,
+    // centerPadding: -15,
   };
 
   // render danh sách phim

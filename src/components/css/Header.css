@@ -1,0 +1,22 @@
+.navbar__header {
+  display: flex;
+  padding: 0 20px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.header {
+  height: 60px;
+  background-color: white !important;
+}
+
+.header .nav-link-item {
+  text-decoration: none;
+  color: black;
+  transition: all 0.4s;
+}
+
+.header .nav-link-item:hover {
+  color: #e25755;
+}
+/*# sourceMappingURL=Header.css.map */

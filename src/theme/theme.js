@@ -15,4 +15,13 @@ export const theme = createTheme({
       contrastText: "#c5c5c5",
     },
   },
+  props: {
+    MuiCard: {
+      disableRipple: true,
+    },
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
 });
