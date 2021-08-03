@@ -6,11 +6,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getListMovieAction } from "../../store/actions/movie.action";
 import MovieCard from "../../components/MovieCard/MovieCard";
-
+import Carousel from "./../../components/Carousel/Carousel.component";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "./../../../node_modules/slick-carousel/slick/slick-theme.css";
-
+import { data } from "./../../components/Carousel/data";
 import "./home.scss";
 function HomePage() {
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
@@ -27,12 +27,17 @@ function HomePage() {
     slidesToShow: 4,
     slidesToScroll: 4,
     slidesPerRow: 2,
-    // rows: 1,
     arrows: true,
-    // centerMode: true,
-    // centerPadding: -15,
   };
-
+  const settings2 = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    width: 100,
+  };
   // render danh sách phim
   const handleRenderDanhSachPhim = () => {
     return listMovie.map((movie, index) => {
@@ -43,14 +48,29 @@ function HomePage() {
       );
     });
   };
+  const hangleRenderCarousel = () => {
+    return data.map((phim, index) => {
+      return (
+        <div>
+          <img src={phim.img} alt="" />
+          <h1>{phim.name}</h1>
+
+          <p>{phim.moTa}</p>
+        </div>
+      );
+    });
+  };
   return isLoading ? (
     <Loading />
   ) : (
-    <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
-    // <div className="container">
+    <>
+      <div className="carousel">
+        <Slider {...settings2}>{hangleRenderCarousel()}</Slider>
+      </div>
 
-    // </div>
+      <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
+    </>
   );
 }
 
-export default HomePage;
+export default React.memo(HomePage);

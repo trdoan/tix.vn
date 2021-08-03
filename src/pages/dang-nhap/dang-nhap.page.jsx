@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -61,8 +61,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInPage() {
+  console.log("render SignInPage");
   const classes = useStyles();
+  // handleChangeInput
 
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -86,6 +99,7 @@ export default function SignInPage() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleChangeInput}
             />
             <TextField
               variant="outlined"
@@ -93,10 +107,11 @@ export default function SignInPage() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="password"
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChangeInput}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

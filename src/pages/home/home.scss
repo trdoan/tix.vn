@@ -1,12 +1,33 @@
-.slick-arrow {
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
   &:before {
     // color: red;
     color: black;
+    content: "";
+    // background-color: red;
+    display: block;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 0%;
+    z-index: 999;
+    position: absolute;
+    background-image: url("./../../img/nextsession.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }
 .slick-slider {
-  width: 50%;
+  width: 80%;
+  max-width: 1200px;
   margin: auto;
+}
+.carousel {
+  .slick-slider {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 .imgCardMedia::before {
   position: absolute;
@@ -55,14 +76,11 @@
   padding: 10px 8px !important;
 }
 
-.slick-prev {
-  background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
-  color: #eee;
-}
 .slick-prev::before {
-  color: #eee;
-  width: 256px;
-  height: 100%;
+  // color: #eee;
+  // width: 256px;
+  // height: 100%;
   background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
   z-index: 999;
+  left: -5% !important;
 }

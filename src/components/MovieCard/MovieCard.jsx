@@ -28,7 +28,7 @@ export default function MovieCard(props) {
   const { tenPhim, moTa, hinhAnh } = props.movie;
   return (
     <Card className={classes.root} style={{ position: "relative" }}>
-      <CardActionArea>
+      <CardActionArea style={{ backgroundColor: "none" }}>
         <CardMedia
           className={classes.media + " imgCardMedia"}
           image={hinhAnh}

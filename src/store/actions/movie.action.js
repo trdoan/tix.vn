@@ -4,6 +4,7 @@ import { loadingOffAction, loadingOnAction } from "./common.action";
 
 export const getListMovieAction = () => {
   return async (dispatch) => {
+    console.log("reducer call API get movie call mở loading");
     dispatch(loadingOnAction());
     try {
       const res = await axios({
@@ -13,6 +14,7 @@ export const getListMovieAction = () => {
       });
       console.log("Movie list:", res.data);
       dispatch({ type: GET_LIST_MOVIE, payload: res.data });
+      console.log("reducer call API get movie call tắt loading");
       dispatch(loadingOffAction());
     } catch (error) {
       console.log("LỖI GET_LIST_MOVIE_ACTION:", error);
