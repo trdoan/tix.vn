@@ -3,6 +3,25 @@ import logoApple from "./../../img/applelogo.png";
 import logoAndroid from "./../../img/androidlogo.png";
 import logoFacebook from "./../../img/facebooklogo.png";
 import logoZalo from "./../../img/zalologo.png";
+import dataFooter from "./dataFooter";
+import "./footer.scss";
+const renderDanhSachDoiTac = () => {
+  return dataFooter.map((doiTac, index) => {
+    return (
+      <div key={index} className="" style={{ width: "20%", margin: "5px 0" }}>
+        <img
+          src={doiTac.img}
+          alt=""
+          style={{
+            width: 30,
+            height: 30,
+            borderRadius: 50,
+          }}
+        />
+      </div>
+    );
+  });
+};
 function Footer() {
   return (
     <div className="footer my-4">
@@ -24,13 +43,8 @@ function Footer() {
           <div className="col-md-4">
             <div className="titleFooter">ĐỐI TÁC</div>
             <div className="contentFooter">
-              <div className="col-sm-6 col-xs-12">
-                <a href="">FAQ</a>
-                <a href="">Brand Guidelines</a>
-              </div>
-              <div className="col-sm-6 col-xs-12">
-                <a href="">Thỏa thuận sử dụng</a>
-                <a href="">Chính sách bảo mật</a>
+              <div className="col-sm-12 col-xs-12">
+                <div className="d-flex flex-wrap">{renderDanhSachDoiTac()}</div>
               </div>
             </div>
           </div>

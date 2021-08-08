@@ -1,0 +1,27 @@
+.footer {
+  padding: 10px;
+  box-sizing: border-box;
+  .titleFooter {
+    font-family: "SF Text Regular";
+    font-size: 11px;
+    font-weight: 400px;
+    line-height: 16px;
+  }
+  .contentFooter {
+    div {
+      a {
+        font-family: "SF Text Regular";
+        font-size: 12px;
+        line-height: 28px;
+        color: #727272;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.5s;
+        &:hover {
+          color: white;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

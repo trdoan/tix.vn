@@ -71,8 +71,7 @@ function HomePage() {
   };
   const hangleRenderCarousel = () => {
     const getId = (url) => {
-      const regExp =
-        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
       const match = url.match(regExp);
 
       return match && match[2].length === 11 ? match[2] : null;
@@ -80,7 +79,7 @@ function HomePage() {
     return data.map((phim, index) => {
       let videoId = getId(phim.linkTrailer);
       return (
-        <div className="itemCarousel">
+        <div className="itemCarousel" key={index}>
           <img src={phim.img} alt="" className="imgCarousel" />
           <div
             className="trailerMovie"
