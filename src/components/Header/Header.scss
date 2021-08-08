@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "SF Regular";
+  src: url("./../../font/SF-UI-Text-Regular.otf");
+}
 .navbar__header {
   display: flex;
   padding: 0 20px;
@@ -8,10 +12,16 @@
 .header {
   height: 60px;
   background-color: white !important;
+
   .nav-link-item {
     text-decoration: none;
     color: black;
     transition: all 0.4s;
+    h6 {
+      font-family: "SF Regular";
+      line-height: 20px;
+      font-weight: 400;
+    }
     &:hover {
       color: #e25755;
     }

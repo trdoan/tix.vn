@@ -17,11 +17,23 @@ export const theme = createTheme({
   },
   props: {
     MuiCard: {
-      disableRipple: true,
+      // disableRipple: true,
     },
     MuiButtonBase: {
       // The properties to apply
       disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
+  overrides: {
+    // Name of the component ⚛️
+    MuiCssBaseline: {
+      // Name of the rule
+      "@global": {
+        "*, *::before, *::after": {
+          transition: "none !important",
+          animation: "none !important",
+        },
+      },
     },
   },
 });

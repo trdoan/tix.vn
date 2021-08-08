@@ -1,3 +1,164 @@
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+@font-face {
+  font-family: "SF Medium";
+  src: url("./../../font/SF-UI-Display-Medium.otf");
+}
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("./../../font/SF-UI-Text-Regular.otf");
+}
+// reset Bootstrap
+.row {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.menuDanhSachPhim {
+  margin: 15px;
+  font-family: "SF Medium";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: black;
+  .itemDangChieu,
+  .itemSapChieu {
+    cursor: pointer;
+    transition: all 0.5s;
+    margin: 0 10px;
+    &:hover {
+      font-size: 24px;
+    }
+    &.active {
+      color: #fb4226;
+      font-size: 24px;
+    }
+  }
+}
+.danhSachPhim {
+  .slick-slider {
+    width: 980px;
+    max-width: 1200px;
+    margin: auto;
+    .slick-list {
+      transform: translateX(25px);
+    }
+    .slick-active {
+      width: auto;
+    }
+  }
+
+  .imgCardMedia {
+    border-radius: 4px;
+  }
+  .imgCardMedia::before {
+    border-radius: inherit;
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.041), black);
+    z-index: 9;
+    transition: all 0.5s;
+  }
+
+  .imgCardMedia:hover::before,
+  .imgCardMedia:hover .trailerMovie {
+    opacity: 1;
+  }
+  .trailerMovie {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    display: block;
+    height: 50px;
+    background: rgba(0, 0, 0, 0) url("./../../img/playvideo.png") no-repeat
+      center center;
+    border-radius: 50%;
+    z-index: 10;
+    border: 1px solid white;
+    transition: all 0.5s;
+  }
+  .typeMovie {
+    display: inline-block;
+    padding: 3px 5px;
+    margin: 0 5px 0 0;
+    background-color: #fc4226;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  .cardContent {
+    padding: 0 !important;
+    margin: 10px 0px;
+  }
+
+  .slick-prev::before {
+    background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
+    z-index: 999;
+    left: -5% !important;
+  }
+  .cardContent {
+    display: flex;
+    align-items: center;
+    .typeMovie {
+      align-self: flex-start;
+      font-weight: normal;
+      font-size: 14px;
+      background-color: #fb4226;
+      border-radius: 4px;
+      padding: 0 5px;
+      color: #fff;
+      min-width: 33px;
+      text-align: center;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .titleMovie {
+      font-family: "SF Medium";
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      -webkit-box-orient: vertical;
+    }
+  }
+  .txtPoint {
+    text-align: center;
+    font-family: "SF Medium";
+    font-size: 16px;
+    background-color: rgba(12, 27, 54, 0.8);
+    border: 1px solid #1f2e46;
+    border-radius: 4px;
+    padding: 2px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #fff;
+    width: 54px;
+    text-align: center;
+    line-height: 1.1;
+    .danhGia {
+      transform: scaleY(1.2);
+      font-size: 16px;
+    }
+  }
+  .thoiGianPhim {
+    font-family: "SF Text Regular";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 19px;
+    color: #4a4a4a;
+  }
+}
 .slick-arrow.slick-prev,
 .slick-arrow.slick-next {
   &:before {
@@ -16,71 +177,118 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    opacity: 1;
   }
 }
-.slick-slider {
-  width: 80%;
-  max-width: 1200px;
-  margin: auto;
-}
+
+// carousel banner phim
 .carousel {
+  height: 600px;
+  overflow: hidden;
+  .itemCarousel {
+    position: relative;
+    .imgCarousel {
+      display: block;
+      height: 600px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center 5%;
+    }
+    .trailerMovie {
+      cursor: pointer;
+      opacity: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      display: block;
+      height: 80px;
+      background: rgba(0, 0, 0, 0) url("./../../img/playvideo.png") no-repeat
+        center center;
+      border-radius: 50%;
+      z-index: 10;
+      border: 1px solid white;
+      transition: all 0.5s;
+    }
+  }
   .slick-slider {
     width: 100%;
     max-width: 100%;
+    &::before {
+      border-radius: inherit;
+      position: absolute;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 10%;
+      bottom: 0;
+      left: 0;
+      opacity: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.664)
+      );
+      z-index: 9;
+      transition: all 0.5s;
+    }
+  }
+  .slick-dots {
+    position: absolute;
+    bottom: 10%;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      button {
+        &:before {
+          font-size: 13px;
+          color: white;
+          opacity: 1;
+        }
+      }
+      &.slick-active {
+        button {
+          &::before {
+            color: #fb4226 !important;
+          }
+        }
+      }
+    }
+  }
+  .slick-prev {
+    left: 30px;
+    z-index: 9;
+    width: 100px;
+    &::before {
+      background-image: url("https://tix.vn/app/assets/img/icons/back-session.png");
+    }
+  }
+  .slick-next {
+    z-index: 9;
+    right: 30px;
   }
 }
-.imgCardMedia::before {
-  position: absolute;
-  display: block;
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.041), black);
-  z-index: 9;
-  transition: all 0.5s;
-}
 
-.imgCardMedia:hover::before,
-.imgCardMedia:hover .trailerMovie {
-  opacity: 1;
-}
-.trailerMovie {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  display: block;
-  height: 50px;
-  background: rgba(0, 0, 0, 0) url("./../../img/playvideo.png") no-repeat center
-    center;
-  border-radius: 50%;
-  z-index: 10;
-  border: 1px solid white;
-  transition: all 0.5s;
-}
-.typeMovie {
-  display: inline-block;
-  padding: 3px 5px;
-  margin: 0 5px 0 0;
-  background-color: #fc4226;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-}
-.cardContent {
-  padding: 10px 8px !important;
-}
-
-.slick-prev::before {
-  // color: #eee;
-  // width: 256px;
-  // height: 100%;
-  background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
-  z-index: 999;
-  left: -5% !important;
+// footer
+.footer {
+  background-color: #222222;
+  .col-sm-6,
+  .col-xs-12 {
+    padding: 0;
+  }
+  .titleFooter {
+    color: white;
+  }
+  .contentFooter {
+    display: flex;
+    a {
+      display: block;
+      white-space: nowrap;
+    }
+  }
 }
