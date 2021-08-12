@@ -40,11 +40,13 @@ export default function Header() {
     <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
         <Toolbar>
-          <img
-            src="https://tix.vn/app/assets/img/icons/web-logo.png"
-            alt="logo"
-            className={classes.logo_website}
-          />
+          <Link to="/" exact="true">
+            <img
+              src="https://tix.vn/app/assets/img/icons/web-logo.png"
+              alt="logo"
+              className={classes.logo_website}
+            />
+          </Link>
           <div className="navbar__header">
             <Link to="/" className="nav-link-item" exact="true">
               <Typography variant="h6" className={classes.title}>
