@@ -8,23 +8,30 @@ import "./footer.scss";
 const renderDanhSachDoiTac = () => {
   return dataFooter.map((doiTac, index) => {
     return (
-      <div key={index} className="" style={{ width: "20%", margin: "5px 0" }}>
-        <img
-          src={doiTac.img}
-          alt=""
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: 50,
-          }}
-        />
+      <div
+        key={index}
+        className="doiTacItem"
+        style={{ width: "20%", margin: "5px 0" }}
+      >
+        <a href={doiTac.link} title={doiTac.name} target="_blank">
+          <img
+            src={doiTac.img}
+            alt=""
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: 50,
+              background: "#fff",
+            }}
+          />
+        </a>
       </div>
     );
   });
 };
 function Footer() {
   return (
-    <div className="footer my-4">
+    <div className="footer">
       <div className="container">
         <div className="row">
           <div className="col-md-4">
@@ -62,13 +69,63 @@ function Footer() {
               <div className="col-sm-6">
                 <div className="titleFooter">SOCIAL</div>
                 <span style={{ display: "inline-block", margin: "5px" }}>
-                  <img src={logoFacebook} width={30} alt="logoFacebook" />
+                  <a href="https://www.facebook.com/tix.vn/" target="_blank">
+                    <img src={logoFacebook} width={30} alt="logoFacebook" />
+                  </a>
                 </span>
                 <span style={{ display: "inline-block", margin: "5px" }}>
-                  <img src={logoZalo} width={30} alt="logoZalo" />
+                  <a href="https://zalo.me/tixdatve" target="_blank">
+                    <img src={logoZalo} width={30} alt="logoZalo" />
+                  </a>
                 </span>
               </div>
             </div>
+          </div>
+        </div>
+        <hr className="hrFooter" />
+        <div className="row">
+          <div className="col-sm-1 col-xs-12 imgFooter">
+            <img
+              className="vngIcon"
+              src="	https://tix.vn/app/assets/img/icons/zion-logo.jpg"
+              style={{ borderRadius: 8 }}
+            />
+          </div>
+          <div className="col-sm-9 col-xs-12 infoFooter">
+            <span>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</span>
+            <span>
+              Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ
+              Chí Minh, Việt Nam.
+            </span>
+            <span>
+              Giấy chứng nhận đăng ký kinh doanh số: 0101659783,
+              <br />
+              đăng ký thay đổi lần&nbsp;thứ&nbsp;30,
+              ngày&nbsp;22&nbsp;tháng&nbsp;01&nbsp;năm&nbsp;2020 do
+              Sở&nbsp;kế&nbsp;hoạch&nbsp;và&nbsp;đầu&nbsp;tư Thành phố Hồ Chí
+              Minh cấp.
+            </span>
+            <span>
+              Số Điện Thoại (Hotline): 1900&nbsp;545&nbsp;436
+              <br />
+              Email:{" "}
+              <a href="mailto:support@tix.vn" style={{ color: "#FB4226" }}>
+                support@tix.vn
+              </a>
+            </span>
+          </div>
+          <div className="col-sm-2 col-xs-12 imgFooter">
+            <a
+              target="_blank"
+              href="http://online.gov.vn/Home/WebDetails/62782"
+            >
+              <img
+                className="imgBoCo"
+                alt="Bộ Công Thương"
+                title
+                src="https://s3img.vcdn.vn/123phim/2020/03/d1e6bd560daa9e20131ea8a0f62e87f8.png"
+              />
+            </a>
           </div>
         </div>
       </div>

@@ -12,7 +12,9 @@
 .header {
   height: 60px;
   background-color: white !important;
-
+  position: fixed;
+  z-index: 99;
+  width: 100%;
   .nav-link-item {
     text-decoration: none;
     color: black;
@@ -25,5 +27,12 @@
     &:hover {
       color: #e25755;
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar__header,
+  .nav-link-item {
+    display: none;
   }
 }

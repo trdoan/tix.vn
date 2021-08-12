@@ -12,6 +12,7 @@ import star1_2 from "./../../img/star1.2.png";
 
 import ReactDOM from "react-dom";
 import { modalOnAction } from "../../store/actions/common.action";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 220,

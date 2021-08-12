@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 // css
 import "./Header.scss";
 import { Link } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar.component";
 // import SignInPage from "../../pages/dang-nhap/dang-nhap.page";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +37,7 @@ export default function Header() {
   const classes = useStyles();
   console.log("RENDER HEADER");
   return (
-    <div className={classes.root}>
+    <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
         <Toolbar>
           <img
@@ -67,9 +68,9 @@ export default function Header() {
             </Link>
           </div>
           <Link to="/dang-nhap" exact="true" className="nav-link-item">
-            {/* <SignInPage /> */}
             <Typography>LOGIN</Typography>
           </Link>
+          <Sidebar />
         </Toolbar>
       </AppBar>
     </div>

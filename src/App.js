@@ -5,6 +5,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignInPage from "./pages/dang-nhap/dang-nhap.page";
 import HomePage from "./pages/home/home.page";
+import Sidebar from "./components/Sidebar/Sidebar.component";
 function App() {
   return (
     <>
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/chi-tiet-phim" exact>
             <h1>Chi tiết phim</h1>
+          </Route>
+          <Route path="/test" exact>
+            <Sidebar />
           </Route>
         </Switch>
       </BrowserRouter>
