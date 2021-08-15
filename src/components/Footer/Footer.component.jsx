@@ -13,7 +13,12 @@ const renderDanhSachDoiTac = () => {
         className="doiTacItem"
         style={{ width: "20%", margin: "5px 0" }}
       >
-        <a href={doiTac.link} title={doiTac.name} target="_blank">
+        <a
+          href={doiTac.link}
+          title={doiTac.name}
+          target="_blank"
+          rel="noreferrer"
+        >
           <img
             src={doiTac.img}
             alt=""
@@ -38,12 +43,16 @@ function Footer() {
             <div className="titleFooter">TIX</div>
             <div className="contentFooter">
               <div className="col-sm-6 col-xs-12">
-                <a href="">FAQ</a>
-                <a href="">Brand Guidelines</a>
+                <a href="https://tix.vn/faq">FAQ</a>
+                <a href="https://tix.vn/brand-guideline/">Brand Guidelines</a>
               </div>
               <div className="col-sm-6 col-xs-12">
-                <a href="">Thỏa thuận sử dụng</a>
-                <a href="">Chính sách bảo mật</a>
+                <a href="https://tix.vn/thoa-thuan-su-dung">
+                  Thỏa thuận sử dụng
+                </a>
+                <a href="https://tix.vn/chinh-sach-bao-mat">
+                  Chính sách bảo mật
+                </a>
               </div>
             </div>
           </div>
@@ -69,12 +78,20 @@ function Footer() {
               <div className="col-sm-6">
                 <div className="titleFooter">SOCIAL</div>
                 <span style={{ display: "inline-block", margin: "5px" }}>
-                  <a href="https://www.facebook.com/tix.vn/" target="_blank">
+                  <a
+                    href="https://www.facebook.com/tix.vn/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <img src={logoFacebook} width={30} alt="logoFacebook" />
                   </a>
                 </span>
                 <span style={{ display: "inline-block", margin: "5px" }}>
-                  <a href="https://zalo.me/tixdatve" target="_blank">
+                  <a
+                    href="https://zalo.me/tixdatve"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <img src={logoZalo} width={30} alt="logoZalo" />
                   </a>
                 </span>
@@ -88,6 +105,7 @@ function Footer() {
             <img
               className="vngIcon"
               src="	https://tix.vn/app/assets/img/icons/zion-logo.jpg"
+              alt="vngIcon"
               style={{ borderRadius: 8 }}
             />
           </div>
@@ -118,11 +136,11 @@ function Footer() {
             <a
               target="_blank"
               href="http://online.gov.vn/Home/WebDetails/62782"
+              rel="noreferrer"
             >
               <img
                 className="imgBoCo"
                 alt="Bộ Công Thương"
-                title
                 src="https://s3img.vcdn.vn/123phim/2020/03/d1e6bd560daa9e20131ea8a0f62e87f8.png"
               />
             </a>

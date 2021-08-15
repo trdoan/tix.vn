@@ -3,3 +3,48 @@
     display: none !important;
   }
 }
+.danhSachPhim {
+  margin: auto;
+  position: relative;
+  height: 900px;
+  margin: 15px;
+  .container {
+    ul.nav-tabs {
+      border-bottom: none;
+      text-align: center;
+      justify-content: center;
+      li.nav-item {
+        a.itemDanhSachPhim {
+          color: black;
+          font-family: "SF Medium";
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 20px;
+          background-color: none !important;
+          border-color: none !important;
+          border: none;
+          transition: all 0.5s;
+          cursor: pointer;
+          &.active {
+            color: #fb4226;
+            font-size: 24px;
+          }
+          &:hover {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    .tab-content {
+      .tab-pane {
+        top: 30px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .slick-slider {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

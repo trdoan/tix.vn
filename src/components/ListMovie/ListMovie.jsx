@@ -20,26 +20,70 @@ function ListMovie() {
     arrows: true,
   };
   const listMovie = useSelector((state) => state.movieReducer.listMovie);
-
+  const listMovie2 = useSelector((state) => state.movieReducer.listMovie2);
   const handleSelectListMovie = (e) => {
     dispatch(thayDoiDanhSachPhimAction());
   };
   // render danh sách phim
-  const handleRenderDanhSachPhim = () => {
-    return listMovie.map((movie, index) => {
-      return <MovieCard key={index} movie={movie} />;
+  const handleRenderDanhSachPhim = (loaiChieu = true) => {
+    if (loaiChieu) {
+      return listMovie.map((movie, index) => {
+        return <MovieCard key={index} movie={movie} loaiChieu={true} />;
+      });
+    }
+    return listMovie2.map((movie, index) => {
+      return <MovieCard key={index} movie={movie} loaiChieu={false} />;
     });
   };
 
   return (
-    <div className="danhSachPhim">
-      <div className="menuDanhSachPhim d-flex justify-content-center align-items-center">
-        <div onClick={(e) => handleSelectListMovie(e)}>Đang Chiếu</div>
-        <div onClick={(e) => handleSelectListMovie(e)}>Sắp Chiếu</div>
-      </div>
-      <div className="row">
-        <div className="container">
-          <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
+    <div className="danhSachPhim" id="danhSachPhim">
+      <div className="container">
+        <ul className="nav nav-tabs menuDanhSachPhim" id="myTab" role="tablist">
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link active itemDanhSachPhim"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+            >
+              Đang chiếu
+            </a>
+          </li>
+          <li className="nav-item" role="presentation">
+            <a
+              className="nav-link itemDanhSachPhim"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              Sắp chiếu
+            </a>
+          </li>
+        </ul>
+        <div className="tab-content" id="myTabContent">
+          <div
+            className="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
+          </div>
+          <div
+            className="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <Slider {...settings}>{handleRenderDanhSachPhim(false)}</Slider>
+          </div>
         </div>
       </div>
     </div>

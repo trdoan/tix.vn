@@ -12,8 +12,8 @@
 .header {
   height: 60px;
   background-color: white !important;
-  position: fixed;
-  z-index: 99;
+  // position: fixed;
+  z-index: 99999999;
   width: 100%;
   .nav-link-item {
     text-decoration: none;

@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar.component";
+import { useSelector } from "react-redux";
 // import SignInPage from "../../pages/dang-nhap/dang-nhap.page";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
+  const user = useSelector((state) => state.authReducer.user);
   console.log("RENDER HEADER");
   return (
     <div className={classes.root + " header"}>
@@ -70,8 +73,23 @@ export default function Header() {
             </Link>
           </div>
           <Link to="/dang-nhap" exact="true" className="nav-link-item">
-            <Typography>LOGIN</Typography>
+            <div className="loginContainer d-flex align-items-center">
+              <img
+                src="https://tix.vn/app/assets/img/avatar.png"
+                alt="avtar"
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 50,
+                  margin: "0 5px",
+                }}
+              />
+              <Typography>
+                {isLogin ? "Xin chào " + user.hoTen : "Đăng nhập"}{" "}
+              </Typography>
+            </div>
           </Link>
+
           <Sidebar />
         </Toolbar>
       </AppBar>

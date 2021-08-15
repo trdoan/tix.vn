@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,17 +9,15 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import star1 from "./../../img/star1.png";
 import star1_2 from "./../../img/star1.2.png";
-
-import ReactDOM from "react-dom";
 import { modalOnAction } from "../../store/actions/common.action";
-
+import "./MovieCard.scss";
 const useStyles = makeStyles({
   root: {
     maxWidth: 220,
-    height: "auto",
+
     // maxHeight: 480,
     marginTop: 20,
-    margin: "0px 0px",
+    margin: "20px 10px ",
     // padding: "5px",
     background: "#fff",
     boxShadow: "none",
@@ -34,6 +32,7 @@ const useStyles = makeStyles({
 });
 
 export function MovieCard(props) {
+  const { loaiChieu } = props;
   const dispatch = useDispatch();
   const getId = (url) => {
     const regExp =
@@ -47,8 +46,10 @@ export function MovieCard(props) {
   const classes = useStyles();
 
   const { tenPhim, danhGia, hinhAnh, trailer } = props.movie;
-  // console.log(trailer);
-  const videoId = getId(trailer);
+
+  const videoId = getId(
+    trailer == null ? "https://www.youtube.com/watch?v=j8U06veqxdU" : trailer
+  );
   const mangThoiGianPhim = [90, 100, 120, 180];
   let numberStar = 0;
   let arrStar = [];
@@ -67,7 +68,12 @@ export function MovieCard(props) {
   const renderStarMovie = () => {
     return arrStar.map((item, index) => {
       return (
-        <img key={index} src={star1} style={{ width: 8, height: 8 }}></img>
+        <img
+          key={index}
+          src={star1}
+          style={{ width: 8, height: 8 }}
+          alt="starOfMovie"
+        ></img>
       );
     });
   };
@@ -90,7 +96,10 @@ export function MovieCard(props) {
 
           <CardContent className="cardContent">
             <p className="titleMovie">
-              <span className="typeMovie">C18</span> {tenPhim}
+              <span className={loaiChieu ? "typeMovie" : "typeMovie-2"}>
+                {loaiChieu ? "C18" : "P"}
+              </span>{" "}
+              {tenPhim}
             </p>
           </CardContent>
         </CardActionArea>
@@ -126,4 +135,4 @@ export function MovieCard(props) {
   );
 }
 
-export default MovieCard;
+export default React.memo(MovieCard);

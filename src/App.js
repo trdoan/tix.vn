@@ -6,6 +6,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignInPage from "./pages/dang-nhap/dang-nhap.page";
 import HomePage from "./pages/home/home.page";
 import Sidebar from "./components/Sidebar/Sidebar.component";
+import Booking from "./pages/booking/Booking";
+import ErrorPage from "./pages/error/Error.jsx";
+
 function App() {
   return (
     <>
@@ -25,7 +28,15 @@ function App() {
             <h1>Chi tiết phim</h1>
           </Route>
           <Route path="/test" exact>
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <ErrorPage />
+            {/* <ListLocation /> */}
+          </Route>
+          <Route path="/booking" exact>
+            <Booking />
+          </Route>
+          <Route path="">
+            <ErrorPage />
           </Route>
         </Switch>
       </BrowserRouter>

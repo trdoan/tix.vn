@@ -15,91 +15,17 @@
 .container {
   max-width: 940px !important;
 }
-.menuDanhSachPhim {
-  margin: 15px;
-  font-family: "SF Medium";
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 20px;
-  color: black;
-  .itemDangChieu,
-  .itemSapChieu {
-    cursor: pointer;
-    transition: all 0.5s;
-    margin: 0 10px;
-    &:hover {
-      font-size: 24px;
-    }
-    &.active {
-      color: #fb4226;
-      font-size: 24px;
-    }
-  }
-}
+
 .danhSachPhim {
-  .slick-slider {
-    width: 980px;
-    max-width: 1200px;
-    margin: auto;
-    .slick-list {
-      transform: translateX(25px);
-    }
-    .slick-active {
-      width: auto;
-    }
-  }
+  // .slick-slider {
+  //   width: 980px;
+  //   max-width: 1200px;
+  //   margin: auto;
 
-  .imgCardMedia {
-    border-radius: 4px;
-  }
-  .imgCardMedia::before {
-    border-radius: inherit;
-    position: absolute;
-    display: block;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.041), black);
-    z-index: 9;
-    transition: all 0.5s;
-  }
-
-  .imgCardMedia:hover::before,
-  .imgCardMedia:hover .trailerMovie {
-    opacity: 1;
-  }
-  .trailerMovie {
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    display: block;
-    height: 50px;
-    background: rgba(0, 0, 0, 0) url("./../../img/playvideo.png") no-repeat
-      center center;
-    border-radius: 50%;
-    z-index: 10;
-    border: 1px solid white;
-    transition: all 0.5s;
-  }
-  .typeMovie {
-    display: inline-block;
-    padding: 3px 5px;
-    margin: 0 5px 0 0;
-    background-color: #fc4226;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  .cardContent {
-    padding: 0 !important;
-    margin: 10px 0px;
-  }
+  //   .slick-active {
+  //     width: auto;
+  //   }
+  // }
 
   .slick-prev::before {
     background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
@@ -186,10 +112,6 @@
 
 // carousel banner phim
 .carousel {
-  .itemCarousel {
-    .trailerMovie {
-    }
-  }
   .slick-slider {
     width: 100%;
     max-width: 100%;
@@ -203,11 +125,7 @@
       bottom: 0;
       left: 0;
       opacity: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.664)
-      );
+
       z-index: 9;
       transition: all 0.5s;
     }

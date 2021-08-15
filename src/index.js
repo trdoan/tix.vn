@@ -11,6 +11,7 @@ import "./../node_modules/jquery/dist/jquery.slim";
 import "./../node_modules/popper.js/dist/popper";
 import { theme } from "./theme/theme";
 import { ThemeProvider } from "@material-ui/core";
+
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>

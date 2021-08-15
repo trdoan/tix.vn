@@ -1,0 +1,16 @@
+.pageError {
+  padding-top: 60px;
+
+  h2 {
+    color: #fb4226;
+  }
+
+  @media screen and (max-width: 767px) {
+    .contentError {
+      order: 1;
+    }
+    .imgContainer {
+      order: 2;
+    }
+  }
+}

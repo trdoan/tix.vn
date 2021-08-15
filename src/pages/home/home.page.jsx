@@ -4,19 +4,19 @@ import { useSelector } from "react-redux";
 import Loading from "../../components/Loading/loading";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getListMovieAction } from "../../store/actions/movie.action";
+import {
+  getListMovieAction,
+  getListMovieAction2,
+} from "../../store/actions/movie.action";
 
 import ModalVideo from "react-modal-video";
 
 import Footer from "../../components/Footer/Footer.component";
-import {
-  modalOffAction,
-  modalOnAction,
-  thayDoiDanhSachPhimAction,
-} from "../../store/actions/common.action";
+import { modalOffAction } from "../../store/actions/common.action";
 import Carousel from "../../components/Carousel/Carousel";
 import "./home.scss";
 import ListMovie from "../../components/ListMovie/ListMovie";
+import MobileApp from "../../components/MobileApp/MobileApp";
 function HomePage() {
   //
   const dispatch = useDispatch();
@@ -27,8 +27,9 @@ function HomePage() {
   );
   const maNhomPhim = maNhomMovieList ? "GP07" : "GP08";
   //   get data render ra giao diện
-  useEffect(() => dispatch(getListMovieAction()), []);
-  console.log(maNhomPhim);
+  useEffect(() => dispatch(getListMovieAction()), [dispatch]);
+  useEffect(() => dispatch(getListMovieAction2()), [dispatch]);
+  // console.log(maNhomPhim);
   console.log("isLoading:  ", isLoading);
   // xử lý modal
   const isModal = useSelector((state) => state.commonReducer.isModal);
@@ -42,6 +43,7 @@ function HomePage() {
       <React.Fragment>
         <Carousel />
         <ListMovie />
+        <MobileApp />
         <Footer />
         <ModalVideo
           channel="youtube"
