@@ -9,10 +9,14 @@ import Typography from "@material-ui/core/Typography";
 // logo
 // import logo from "../../img/11.png";
 // css
-import "./Header.scss";
+
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar.component";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutAction } from "../../store/actions/auth.action";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import "./Header.scss";
 // import SignInPage from "../../pages/dang-nhap/dang-nhap.page";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,10 +39,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const user = useSelector((state) => state.authReducer.user);
   console.log("RENDER HEADER");
+  console.log("isLogin Header", isLogin);
   return (
     <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
@@ -72,23 +78,71 @@ export default function Header() {
               </Typography>
             </Link>
           </div>
-          <Link to="/dang-nhap" exact="true" className="nav-link-item">
-            <div className="loginContainer d-flex align-items-center">
-              <img
-                src="https://tix.vn/app/assets/img/avatar.png"
-                alt="avtar"
-                style={{
-                  width: 30,
-                  height: 30,
-                  borderRadius: 50,
-                  margin: "0 5px",
-                }}
-              />
-              <Typography>
-                {isLogin ? "Xin chào " + user.hoTen : "Đăng nhập"}{" "}
-              </Typography>
-            </div>
-          </Link>
+          {isLogin ? (
+            <Typography
+              className="loginHeader"
+              style={{
+                position: "relative",
+                color: "black",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="loginContainer d-flex align-items-center"
+                onClick={() =>
+                  document
+                    .getElementsByClassName("profileWrapper")[0]
+                    .classList.toggle("d-block")
+                }
+              >
+                <img
+                  src="https://tix.vn/app/assets/img/avatar.png"
+                  alt="avtar"
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 50,
+                    margin: "0 5px",
+                  }}
+                />
+                <Typography>
+                  {isLogin ? "Xin chào " + user.hoTen : "Đăng nhập"}{" "}
+                </Typography>
+              </div>
+              <div className="profileWrapper">
+                <div className="arrow-up"></div>
+                <Link to="profile">
+                  <AccountCircleIcon /> Hồ sơ
+                </Link>
+                <div className="">
+                  <Link onClick={() => dispatch(logoutAction())}>
+                    <ExitToAppIcon /> Đăng xuất
+                  </Link>
+                </div>
+              </div>
+            </Typography>
+          ) : (
+            <Link
+              to="/dang-nhap"
+              exact
+              className="nav-link-item"
+              style={{ position: "relative" }}
+            >
+              <div className="loginContainer d-flex align-items-center">
+                <img
+                  src="https://tix.vn/app/assets/img/avatar.png"
+                  alt="avtar"
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 50,
+                    margin: "0 5px",
+                  }}
+                />
+                <Typography>Đăng nhập</Typography>
+              </div>
+            </Link>
+          )}
 
           <Sidebar />
         </Toolbar>

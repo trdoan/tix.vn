@@ -3,7 +3,6 @@
     display: none !important;
   }
 }
-
 .buttonShowSidebar {
   display: none;
 }
@@ -16,10 +15,29 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
-
+  font-family: "SF Regular";
+  a,
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  li {
+    display: block;
+    padding: 20px 20px;
+    position: relative;
+    // width: calc(100% - 40px);
+    font-size: 18px;
+    color: #000;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
   .exitSideBar {
     width: 15px;
     height: 15px;
+    position: absolute;
+    right: 0;
     img {
       width: 15px;
       height: 15px;

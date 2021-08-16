@@ -31,8 +31,8 @@ function Carousel() {
     return data.map((phim, index) => {
       let videoId = getId(phim.linkTrailer);
       return (
-        <div className="itemCarousel" key={index}>
-          <img src={phim.img} alt="" className="imgCarousel" />
+        <div className="itemCarousel col-12" key={index}>
+          <img src={phim.img} alt="" className="imgCarousel img-fluid" />
           <div
             className="trailerMovie"
             onClick={() => dispatch(modalOnAction(videoId))}

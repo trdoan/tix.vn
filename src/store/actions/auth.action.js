@@ -1,5 +1,7 @@
 import axios from "axios";
-import { LOGIN } from "../constants/auth.const";
+import { useHistory } from "react-router-dom";
+
+import { LOGIN, LOGOUT } from "../constants/auth.const";
 
 export const loginAction = (user, history) => {
   return async (dispatch) => {
@@ -10,13 +12,16 @@ export const loginAction = (user, history) => {
         data: user,
       });
       dispatch({ type: LOGIN, payload: res.data });
-      alert("login successfully");
+      // alert("login successfully");
       history.push("/");
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
-      console.log("thất bại", error.response);
+      // console.log("thất bại", error.response);
       document.getElementById("notifiLogin").innerHTML = error.response.data;
       document.getElementById("notifiLogin").style.display = "block";
     }
   };
+};
+export const logoutAction = () => {
+  return { type: LOGOUT };
 };

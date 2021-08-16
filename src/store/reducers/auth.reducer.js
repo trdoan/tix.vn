@@ -1,4 +1,4 @@
-import { LOGIN } from "../constants/auth.const";
+import { LOGIN, LOGOUT } from "../constants/auth.const";
 
 const initialState = {
   user: {},
@@ -11,7 +11,10 @@ export const authReducer = (state = initialState, action) => {
       state.user = payload;
       state.isLogin = true;
       return { ...state };
-
+    case LOGOUT:
+      state.user = {};
+      state.isLogin = false;
+      return { ...state };
     default:
       return state;
   }

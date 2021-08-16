@@ -7,6 +7,9 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import "./SiderBar.scss";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Typography } from "@material-ui/core";
 const useStyles = makeStyles({
   list: {
     width: "50vw",
@@ -21,7 +24,8 @@ export default function Sidebar() {
   const [state, setState] = React.useState({
     right: false,
   });
-
+  const hoTen = useSelector((state) => state.authReducer.user.hoTen);
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -33,36 +37,60 @@ export default function Sidebar() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
+  let list = (anchor) => (
     <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
+      // className={clsx(classes.list, {
+      //   [classes.fullList]: anchor === "top" || anchor === "bottom",
+      // })}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      onClick={toggleDrawer("right", false)}
+      onKeyDown={toggleDrawer("right", false)}
     >
       <List className="containerNavBar">
-        <Button className="exitSideBar">
-          <img
-            src="https://tix.vn/app/assets/img/icons/next-session.png"
-            alt=""
-          />
-        </Button>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            {/* <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon> */}
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem className="">
+          <div className="">
+            <img
+              src="https://tix.vn/app/assets/img/avatar.png"
+              alt="avtar"
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 50,
+                margin: "0 5px",
+              }}
+            />
+            {isLogin ? (
+              <p>{isLogin}</p>
+            ) : (
+              <Link to="/dang-nhap">Đăng nhập</Link>
+            )}
+          </div>
+          <Button className="exitSideBar">
+            <img
+              src="https://tix.vn/app/assets/img/icons/next-session.png"
+              alt=""
+            />
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Link to="#">Lịch Chiếu</Link>
+        </ListItem>{" "}
+        <ListItem>
+          <Link to="#">Cụm rạp</Link>
+        </ListItem>{" "}
+        <ListItem>
+          <Link to="#">Tin Tức</Link>
+        </ListItem>{" "}
+        <ListItem>
+          <Link to="#">Ứng dụng</Link>
+        </ListItem>
       </List>
     </div>
   );
 
   return (
     <div className="buttonShowSidebar" style={{ marginLeft: "auto" }}>
+      {console.log("render Siderbar")}
       <React.Fragment key={"right"}>
         <Button
           onClick={toggleDrawer("right", true)}
@@ -79,7 +107,55 @@ export default function Sidebar() {
           open={state["right"]}
           onClose={toggleDrawer("right", false)}
         >
-          {list("right")}
+          {/* {list("right")} */}
+          <div
+            className={clsx(classes.list, {
+              [classes.fullList]: "right" === "top" || "right" === "bottom",
+            })}
+            role="presentation"
+            onClick={toggleDrawer("right", false)}
+            onKeyDown={toggleDrawer("right", false)}
+          >
+            <List className="containerNavBar">
+              <ListItem className="">
+                <div className="">
+                  <img
+                    src="https://tix.vn/app/assets/img/avatar.png"
+                    alt="avtar"
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 50,
+                      margin: "0 5px",
+                    }}
+                  />
+                  {isLogin ? (
+                    <Typography>{hoTen}</Typography>
+                  ) : (
+                    <Link to="/dang-nhap">Đăng nhập</Link>
+                  )}
+                </div>
+                <Button className="exitSideBar">
+                  <img
+                    src="https://tix.vn/app/assets/img/icons/next-session.png"
+                    alt=""
+                  />
+                </Button>
+              </ListItem>
+              <ListItem>
+                <Link to="#">Lịch Chiếu</Link>
+              </ListItem>{" "}
+              <ListItem>
+                <Link to="#">Cụm rạp</Link>
+              </ListItem>{" "}
+              <ListItem>
+                <Link to="#">Tin Tức</Link>
+              </ListItem>{" "}
+              <ListItem>
+                <Link to="#">Ứng dụng</Link>
+              </ListItem>
+            </List>
+          </div>
         </Drawer>
       </React.Fragment>
     </div>

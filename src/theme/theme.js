@@ -24,16 +24,16 @@ export const theme = createTheme({
       disableRipple: true, // No more ripple, on the whole application 💣!
     },
   },
-  overrides: {
-    // Name of the component ⚛️
-    MuiCssBaseline: {
-      // Name of the rule
-      "@global": {
-        "*, *::before, *::after": {
-          transition: "none !important",
-          animation: "none !important",
-        },
-      },
-    },
-  },
+  // overrides: {
+  //   // Name of the component ⚛️
+  //   MuiCssBaseline: {
+  //     // Name of the rule
+  //     "@global": {
+  //       "*, *::before, *::after": {
+  //         transition: "none !important",
+  //         animation: "none !important",
+  //       },
+  //     },
+  //   },
+  // },
 });

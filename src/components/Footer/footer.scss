@@ -5,6 +5,10 @@
   font-family: "SF Text Regular";
   .container {
     max-width: 940px !important;
+    .col-sm-6,
+    .col-xs-12 {
+      padding: 0;
+    }
     .row:first-child {
       .titleFooter {
         font-family: "SF Text Regular";
@@ -92,6 +96,7 @@
     }
   }
 }
+
 @media screen and(max-width:992px) {
   .footer {
     .container {

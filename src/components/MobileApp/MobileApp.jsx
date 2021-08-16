@@ -61,7 +61,7 @@ function MobileApp() {
       <div className="container">
         <div className="row">
           <div className="col-md-6 left text-left text-white">
-            <div>
+            <div className="content-firstRow">
               <p className="textLeft">Ứng dụng tiện lợi dành cho</p>
               <p className="textLeft">người yêu điện ảnh</p>
               <br />
@@ -93,7 +93,7 @@ function MobileApp() {
               </p>
             </div>
           </div>
-          <div className="col-md-6 right">
+          <div className="col-md-6 right mobileBorder">
             <img className="mobileDevice" src={mobile} alt="mobile" />
             <Slider {...setting}>{renderSlideMobileApp()}</Slider>
           </div>
