@@ -49,7 +49,7 @@ export function MovieCard(props) {
   const classes = useStyles();
 
   const { maPhim, tenPhim, danhGia, hinhAnh, trailer } = props.movie;
-
+  // console.log());
   const videoId = getId(
     trailer == null ? "https://www.youtube.com/watch?v=j8U06veqxdU" : trailer
   );
@@ -91,7 +91,7 @@ export function MovieCard(props) {
         <CardActionArea style={{ backgroundColor: "none" }}>
           <CardMedia
             className={classes.media + " imgCardMedia"}
-            image={hinhAnh}
+            image={hinhAnh.replace("http", "https")}
             // title="Contemplative Reptile"
             style={{ position: "relative" }}
           >
