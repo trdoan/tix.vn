@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {
   GET_DETAIL_MOVIE,
   GET_LIST_MOVIE,
@@ -42,15 +43,17 @@ export const getListMovieAction2 = () => {
 };
 export const getDetailMovieAction = (maPhim) => {
   return async (dispatch) => {
+    dispatch(loadingOnAction());
     try {
       const res = await axios({
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
         method: "GET",
       });
-      console.log("chi tiet phim: ", res.data);
+
       dispatch({ type: GET_DETAIL_MOVIE, payload: res.data });
+      dispatch(loadingOffAction());
     } catch (err) {
-      console.log("Lỗi getDetailMovie", err);
+      dispatch(loadingOffAction());
     }
   };
 };

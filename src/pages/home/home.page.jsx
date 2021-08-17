@@ -17,6 +17,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import "./home.scss";
 import ListMovie from "../../components/ListMovie/ListMovie";
 import MobileApp from "../../components/MobileApp/MobileApp";
+
 function HomePage() {
   //
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function HomePage() {
   const isModal = useSelector((state) => state.commonReducer.isModal);
   const videoId = useSelector((state) => state.commonReducer.videoModalId);
 
+  const clickOutSide = () => {};
   return isLoading ? (
     <Loading />
   ) : (

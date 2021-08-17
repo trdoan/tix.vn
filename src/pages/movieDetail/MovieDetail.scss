@@ -1,0 +1,28 @@
+.chiTietPhim {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+
+  p {
+    color: black;
+  }
+  .filmPosterTop {
+    img {
+      display: block;
+      border-radius: 5px;
+    }
+  }
+  .typeMovie {
+    align-self: flex-start;
+    font-weight: normal;
+    font-size: 14px;
+    background-color: #fb4226;
+    border-radius: 4px;
+    padding: 0 5px;
+    color: #fff;
+    min-width: 33px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 8px;
+  }
+}

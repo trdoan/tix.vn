@@ -11,21 +11,23 @@ import star1 from "./../../img/star1.png";
 import star1_2 from "./../../img/star1.2.png";
 import { modalOnAction } from "../../store/actions/common.action";
 import "./MovieCard.scss";
+
+import { getDetailMovieAction } from "../../store/actions/movie.action";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
-    maxWidth: 220,
-
+    // maxWidth: 220,
     // maxHeight: 480,
     marginTop: 20,
     margin: "20px 10px ",
     // padding: "5px",
     background: "#fff",
     boxShadow: "none",
-    maxHeight: 390,
+    // maxHeight: 390,
     height: 390,
   },
   media: {
-    width: 220,
+    // width: 220,
     height: 300,
     maxHeight: 500,
   },
@@ -33,6 +35,7 @@ const useStyles = makeStyles({
 
 export function MovieCard(props) {
   const { loaiChieu } = props;
+  const history = useHistory();
   const dispatch = useDispatch();
   const getId = (url) => {
     const regExp =
@@ -45,7 +48,7 @@ export function MovieCard(props) {
   // console.log(videoId)
   const classes = useStyles();
 
-  const { tenPhim, danhGia, hinhAnh, trailer } = props.movie;
+  const { maPhim, tenPhim, danhGia, hinhAnh, trailer } = props.movie;
 
   const videoId = getId(
     trailer == null ? "https://www.youtube.com/watch?v=j8U06veqxdU" : trailer
@@ -80,7 +83,11 @@ export function MovieCard(props) {
 
   return (
     <>
-      <Card className={classes.root} style={{ position: "relative" }}>
+      <Card
+        className={classes.root}
+        style={{ position: "relative" }}
+        onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+      >
         <CardActionArea style={{ backgroundColor: "none" }}>
           <CardMedia
             className={classes.media + " imgCardMedia"}
@@ -96,31 +103,14 @@ export function MovieCard(props) {
 
           <CardContent className="cardContent">
             <p className="titleMovie">
-              <span className={loaiChieu ? "typeMovie" : "typeMovie-2"}>
+              {/* <span className={loaiChieu ? "typeMovie" : "typeMovie-2"}>
                 {loaiChieu ? "C18" : "P"}
-              </span>{" "}
-              {tenPhim}
+              </span>{" "} */}
+              <span className="typeMovie">C18</span> {tenPhim}
             </p>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Typography
-            className="thoiGianPhim"
-            style={{
-              fontSize: "13px",
-              position: "absolute",
-              bottom: "10px",
-              left: "0",
-            }}
-          >
-            {
-              mangThoiGianPhim[
-                Math.floor(Math.random() * mangThoiGianPhim.length)
-              ]
-            }{" "}
-            Phút
-          </Typography>
-        </CardActions>
+        <CardActions></CardActions>
 
         <div className="txtPoint ">
           <div className="danhGia">{danhGia}</div>

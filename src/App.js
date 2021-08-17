@@ -8,6 +8,9 @@ import HomePage from "./pages/home/home.page";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 import Booking from "./pages/booking/Booking";
 import ErrorPage from "./pages/error/Error.jsx";
+import MovieDetail from "./pages/movieDetail/MovieDetail";
+import { useSelector } from "react-redux";
+import Loading from "./components/Loading/loading";
 
 function App() {
   return (
@@ -24,8 +27,8 @@ function App() {
           <Route path="/dat-ve" exact>
             <h1>Đặt vé</h1>
           </Route>
-          <Route path="/chi-tiet-phim" exact>
-            <h1>Chi tiết phim</h1>
+          <Route path="/chi-tiet-phim/:maPhim" exact>
+            <MovieDetail />
           </Route>
           <Route path="/test" exact>
             {/* <Sidebar /> */}

@@ -1,14 +1,17 @@
 @media screen and (max-width: 736px) {
   .danhSachPhim {
-    display: none !important;
+    // display: none !important;
   }
 }
 .danhSachPhim {
   margin: auto;
   position: relative;
-  height: 900px;
+  // height: 900px;
   margin: 15px;
   .container {
+    @media screen and(max-width:330px) {
+      padding: 0;
+    }
     ul.nav-tabs {
       border-bottom: none;
       text-align: center;
@@ -25,6 +28,9 @@
           border: none;
           transition: all 0.5s;
           cursor: pointer;
+          @media screen and(max-width:480px) {
+            font-size: 18px;
+          }
           &.active {
             color: #fb4226;
             font-size: 24px;
@@ -43,6 +49,17 @@
         height: 100%;
         .slick-slider {
           width: 100%;
+        }
+        .slick-slider {
+          @media screen and(max-width:736px) {
+            display: none;
+          }
+        }
+        .movieCardMobile {
+          display: none;
+          @media screen and(max-width:736px) {
+            display: block;
+          }
         }
       }
     }

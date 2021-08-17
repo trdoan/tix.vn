@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 // import logo from "../../img/11.png";
 // css
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar.component";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../store/actions/auth.action";
@@ -41,15 +41,29 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const user = useSelector((state) => state.authReducer.user);
-  console.log("RENDER HEADER");
-  console.log("isLogin Header", isLogin);
+  const handleClick = () => {
+    document
+      .getElementsByClassName("profileWrapper")[0]
+      .classList.toggle("d-block");
+  };
+  // document.onload = function () {
+  //   var divToHide = document.getElementById("profileWrapper");
+  //   window.onclick = function (e) {
+  //     if (e.target.id !== "profileWrapper" && divToHide.style !== null) {
+  //       //element clicked wasn't the div; hide the div
+  //       console.log(divToHide);
+  //       // divToHide.style.display = "none";
+  //     }
+  //   };
+  // };
   return (
     <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
         <Toolbar>
-          <Link to="/" exact="true">
+          <Link to="/" exact>
             <img
               src="https://tix.vn/app/assets/img/icons/web-logo.png"
               alt="logo"
@@ -57,22 +71,22 @@ export default function Header() {
             />
           </Link>
           <div className="navbar__header">
-            <Link to="/" className="nav-link-item" exact="true">
+            <Link to="/" className="nav-link-item" exact>
               <Typography variant="h6" className={classes.title}>
                 Lịch Chiếu
               </Typography>
             </Link>
-            <Link to="/chi-tiet-phim" exact="true" className="nav-link-item">
+            <Link to="/chi-tiet-phim" exact className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Cụm rạp
               </Typography>
             </Link>
-            <Link to="/dat-ve" extract="true" className="nav-link-item">
+            <Link to="/dat-ve" extract className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Tin Tức
               </Typography>
             </Link>
-            <Link to="/dat-ve" extract="true" className="nav-link-item">
+            <Link to="/dat-ve" extract className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Ứng dụng
               </Typography>
@@ -89,11 +103,7 @@ export default function Header() {
             >
               <div
                 className="loginContainer d-flex align-items-center"
-                onClick={() =>
-                  document
-                    .getElementsByClassName("profileWrapper")[0]
-                    .classList.toggle("d-block")
-                }
+                onClick={() => handleClick()}
               >
                 <img
                   src="https://tix.vn/app/assets/img/avatar.png"
@@ -105,17 +115,15 @@ export default function Header() {
                     margin: "0 5px",
                   }}
                 />
-                <Typography>
-                  {isLogin ? "Xin chào " + user.hoTen : "Đăng nhập"}{" "}
-                </Typography>
+                <Typography>{isLogin ? user.hoTen : "Đăng nhập"} </Typography>
               </div>
-              <div className="profileWrapper">
+              <div className="profileWrapper" id="profileWrapper">
                 <div className="arrow-up"></div>
-                <Link to="profile">
+                <Link to="/profile" exact>
                   <AccountCircleIcon /> Hồ sơ
                 </Link>
                 <div className="">
-                  <Link onClick={() => dispatch(logoutAction())}>
+                  <Link onClick={() => dispatch(logoutAction(history))} exact>
                     <ExitToAppIcon /> Đăng xuất
                   </Link>
                 </div>

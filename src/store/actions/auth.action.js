@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 import { LOGIN, LOGOUT } from "../constants/auth.const";
 
@@ -22,6 +21,7 @@ export const loginAction = (user, history) => {
     }
   };
 };
-export const logoutAction = () => {
+export const logoutAction = (history) => {
+  history.push("/");
   return { type: LOGOUT };
 };

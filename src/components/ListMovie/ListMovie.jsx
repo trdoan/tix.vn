@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 import { thayDoiDanhSachPhimAction } from "../../store/actions/common.action";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Slider from "react-slick";
+import { useHistory } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "./../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./ListMovie.scss";
 function ListMovie() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const settings = {
     dots: false,
     infinite: true,
@@ -18,6 +20,31 @@ function ListMovie() {
     slidesToScroll: 4,
     slidesPerRow: 2,
     arrows: true,
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       slidesPerRow: 1,
+
+    //       infinite: true,
+    //       arrows: false,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 972,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 1,
+    //       slidesPerRow: 1,
+    //       arrows: false,
+    //       vertical: true,
+    //       verticalSwiping: true,
+    //       infinite: true,
+    //     },
+    //   },
+    // ],
   };
   const listMovie = useSelector((state) => state.movieReducer.listMovie);
   const listMovie2 = useSelector((state) => state.movieReducer.listMovie2);
@@ -75,6 +102,9 @@ function ListMovie() {
             aria-labelledby="home-tab"
           >
             <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
+            <div className="movieCardMobile">
+              {handleRenderDanhSachPhim(true)}
+            </div>
           </div>
           <div
             className="tab-pane fade"
@@ -83,6 +113,9 @@ function ListMovie() {
             aria-labelledby="profile-tab"
           >
             <Slider {...settings}>{handleRenderDanhSachPhim(false)}</Slider>
+            <div className="movieCardMobile">
+              {handleRenderDanhSachPhim(false)}
+            </div>
           </div>
         </div>
       </div>
