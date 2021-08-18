@@ -28,6 +28,10 @@
     // width: calc(100% - 40px);
     font-size: 18px;
     color: #000;
+    &:first-child {
+      display: flex;
+      align-items: center;
+    }
   }
   p {
     margin: 0;

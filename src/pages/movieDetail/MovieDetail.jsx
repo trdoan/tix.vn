@@ -33,17 +33,22 @@ function MovieDetail() {
             <div className="row align-items-center">
               <div className="col-sm-3 col-xs-4 filmPosterTop">
                 <div className="row justify-content-center">
-                  <img className="img-fluid" src={hinhAnh} />
+                  <img
+                    className="img-fluid"
+                    src={hinhAnh.replace("http", "https")}
+                  />
                 </div>
               </div>
               <div className="col-sm-5 infoMain">
-                <p>{dateFormat(ngayKhoiChieu, "dd/mm/yyyy")}</p>
                 <p className="tenPhim">
                   <span className="typeMovie">C18</span> {tenPhim}
                 </p>
                 <p className="danhGia">
-                  {thoiLuong} Phút - {danhGia} iMDb
+                  Thời lượng: {thoiLuong} Phút - {danhGia} iMDb
                 </p>
+                <p>Khởi chiếu: {dateFormat(ngayKhoiChieu, "dd/mm/yyyy")}</p>
+                <p>Định dạng: 2D/Digital</p>
+                <p>Ngôn ngữ: Phụ đề tiếng Việt</p>
               </div>
               <div className="col-sm-2 circleStar ng-scope"></div>
             </div>

@@ -1,7 +1,7 @@
 @media screen and (max-width: 736px) {
-  .danhSachPhim {
-    // display: none !important;
-  }
+  // .danhSachPhim {
+  //   // display: none !important;
+  // }
 }
 .danhSachPhim {
   margin: auto;
@@ -9,7 +9,10 @@
   // height: 900px;
   margin: 15px;
   .container {
-    @media screen and(max-width:330px) {
+    // @media screen and(max-width:330px) {
+    //   padding: 0;
+    // }
+    @media screen and(max-width:736px) {
       padding: 0;
     }
     ul.nav-tabs {
@@ -59,6 +62,13 @@
           display: none;
           @media screen and(max-width:736px) {
             display: block;
+            .MuiCard-root {
+              margin: 0;
+              height: auto;
+              &:first-child {
+                margin-top: 20px;
+              }
+            }
           }
         }
       }

@@ -110,7 +110,7 @@ export function MovieCard(props) {
             </p>
           </CardContent>
         </CardActionArea>
-        <CardActions></CardActions>
+        {/* <CardActions></CardActions> */}
 
         <div className="txtPoint ">
           <div className="danhGia">{danhGia}</div>

@@ -48,23 +48,22 @@ export default function Sidebar() {
     >
       <List className="containerNavBar">
         <ListItem className="">
-          <div className="">
-            <img
-              src="https://tix.vn/app/assets/img/avatar.png"
-              alt="avtar"
-              style={{
-                width: 30,
-                height: 30,
-                borderRadius: 50,
-                margin: "0 5px",
-              }}
-            />
-            {isLogin ? (
-              <p>{isLogin}</p>
-            ) : (
-              <Link to="/dang-nhap">Đăng nhập</Link>
-            )}
-          </div>
+          <img
+            src="https://tix.vn/app/assets/img/avatar.png"
+            alt="avtar"
+            style={{
+              width: 30,
+              height: 30,
+              borderRadius: 50,
+              margin: "0 5px",
+            }}
+          />
+          {isLogin ? (
+            <Typography>{isLogin}</Typography>
+          ) : (
+            <Link to="/dang-nhap">Đăng nhập</Link>
+          )}
+
           <Button className="exitSideBar">
             <img
               src="https://tix.vn/app/assets/img/icons/next-session.png"
@@ -118,23 +117,22 @@ export default function Sidebar() {
           >
             <List className="containerNavBar">
               <ListItem className="">
-                <div className="">
-                  <img
-                    src="https://tix.vn/app/assets/img/avatar.png"
-                    alt="avtar"
-                    style={{
-                      width: 30,
-                      height: 30,
-                      borderRadius: 50,
-                      margin: "0 5px",
-                    }}
-                  />
-                  {isLogin ? (
-                    <Typography>{hoTen}</Typography>
-                  ) : (
-                    <Link to="/dang-nhap">Đăng nhập</Link>
-                  )}
-                </div>
+                <img
+                  src="https://tix.vn/app/assets/img/avatar.png"
+                  alt="avtar"
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 50,
+                    margin: "0 5px",
+                  }}
+                />
+                {isLogin ? (
+                  <Typography>{hoTen}</Typography>
+                ) : (
+                  <Link to="/dang-nhap">Đăng nhập</Link>
+                )}
+
                 <Button className="exitSideBar">
                   <img
                     src="https://tix.vn/app/assets/img/icons/next-session.png"

@@ -5,11 +5,13 @@
 
   p {
     color: black;
+    margin-bottom: 10px;
   }
   .filmPosterTop {
     img {
       display: block;
       border-radius: 5px;
+      min-width: 120px;
     }
   }
   .typeMovie {
@@ -24,5 +26,8 @@
     text-align: center;
     display: inline-block;
     margin-right: 8px;
+  }
+  .infoMain {
+    margin: 10px 0;
   }
 }

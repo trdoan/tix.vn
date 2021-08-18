@@ -20,31 +20,14 @@ function ListMovie() {
     slidesToScroll: 4,
     slidesPerRow: 2,
     arrows: true,
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 3,
-    //       slidesToScroll: 3,
-    //       slidesPerRow: 1,
-
-    //       infinite: true,
-    //       arrows: false,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 972,
-    //     settings: {
-    //       slidesToShow: 2,
-    //       slidesToScroll: 1,
-    //       slidesPerRow: 1,
-    //       arrows: false,
-    //       vertical: true,
-    //       verticalSwiping: true,
-    //       infinite: true,
-    //     },
-    //   },
-    // ],
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
   };
   const listMovie = useSelector((state) => state.movieReducer.listMovie);
   const listMovie2 = useSelector((state) => state.movieReducer.listMovie2);
