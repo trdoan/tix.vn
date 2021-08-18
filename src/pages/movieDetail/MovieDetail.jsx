@@ -20,6 +20,7 @@ function MovieDetail() {
   }, []);
   const { tenPhim, hinhAnh, moTa, ngayKhoiChieu, lichChieu, danhGia } =
     movieDetail;
+
   if (lichChieu) {
     var { thoiLuong } = movieDetail.lichChieu[0];
   }
@@ -35,7 +36,7 @@ function MovieDetail() {
                 <div className="row justify-content-center">
                   <img
                     className="img-fluid"
-                    src={hinhAnh.replace("http", "https")}
+                    src={hinhAnh ? hinhAnh.replace("http", "https") : null}
                   />
                 </div>
               </div>
