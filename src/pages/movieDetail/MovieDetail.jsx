@@ -18,7 +18,7 @@ function MovieDetail() {
   useEffect(() => {
     dispatch(getDetailMovieAction(maPhim));
   }, []);
-  const { tenPhim, hinhAnh, moTa, ngayKhoiChieu, lichChieu, danhGia } =
+  const { tenPhim, trailer, hinhAnh, moTa, ngayKhoiChieu, lichChieu, danhGia } =
     movieDetail;
 
   if (lichChieu) {
@@ -50,6 +50,11 @@ function MovieDetail() {
                 <p>Khởi chiếu: {dateFormat(ngayKhoiChieu, "dd/mm/yyyy")}</p>
                 <p>Định dạng: 2D/Digital</p>
                 <p>Ngôn ngữ: Phụ đề tiếng Việt</p>
+                <button className="btn btn-success">
+                  <a href={trailer} target="_blank">
+                    Trailer
+                  </a>
+                </button>
               </div>
               <div className="col-sm-2 circleStar ng-scope"></div>
             </div>
