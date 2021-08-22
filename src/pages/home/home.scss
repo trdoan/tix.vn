@@ -194,3 +194,89 @@
     right: 30px;
   }
 }
+
+.heThongRap {
+  color: black !important;
+  // max-height: 780px;
+  border: 1px solid #eee;
+  #v-pills-tab {
+    padding: 0;
+    justify-content: center;
+  }
+  #v-pills-tab-2 {
+    max-height: 680px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+    // width: 400px;
+  }
+  a.nav-link {
+    opacity: 0.65;
+    &:active,
+    &.active {
+      opacity: 1;
+    }
+  }
+  .content {
+    color: black;
+    .tenCumRap {
+      margin: 0;
+    }
+    .diaChi {
+      font-size: 12px;
+      margin: 0;
+      color: #d8d8d8;
+    }
+  }
+  .tab-content {
+    max-height: 500px;
+    overflow: auto;
+    a.nav-link {
+      padding: 8px 0px !important;
+    }
+  }
+  .hinhAnhCumRap {
+    display: block;
+    margin: 0 8px;
+  }
+  .nav-link {
+    height: 120px;
+
+    &:not(:last-child) {
+      // border-bottom: 1px solid #eee;
+    }
+  }
+  .content {
+    p {
+      &:nth-child(2) {
+        max-width: 250px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #eee;
+
+    // border-radius: 13px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(190, 190, 190);
+
+    border-radius: 13px;
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background: transparent !important;
+  }
+  /* Handle on hover */
+}

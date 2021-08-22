@@ -4,6 +4,7 @@ import {
   LAY_DANH_SASH_CUM_RAP,
   LAY_THONG_TIN_LICH_CHIEU_RAP,
 } from "../constants/rapChieu.const";
+import { loadingOffAction, loadingOnAction } from "./common.action";
 
 export const getListHeThongRapAction = () => {
   return async (dispatch) => {
@@ -14,7 +15,7 @@ export const getListHeThongRapAction = () => {
         method: "GET",
       });
       dispatch({ type: GET_LIST_HE_THONG_RAP, payload: res.data });
-      //   dispatch(loadingOffAction());
+      // dispatch(loadingOffAction());
     } catch (error) {
       //   dispatch(loadingOffAction());
       console.log(error);

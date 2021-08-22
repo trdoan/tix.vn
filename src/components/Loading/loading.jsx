@@ -10,7 +10,7 @@ function Loading() {
     border-color: #fc4226;
   `;
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <ClipLoader css={override} />
     </div>
   );

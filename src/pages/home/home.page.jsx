@@ -17,7 +17,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import "./home.scss";
 import ListMovie from "../../components/ListMovie/ListMovie";
 import MobileApp from "../../components/MobileApp/MobileApp";
-
+import RapChieu from "./../../components/RapChieu/RapChieu";
 function HomePage() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
@@ -39,6 +39,9 @@ function HomePage() {
       <React.Fragment>
         <Carousel />
         <ListMovie />
+        <div className="container">
+          <RapChieu />
+        </div>
         <MobileApp />
         <Footer />
         {isModal ? (

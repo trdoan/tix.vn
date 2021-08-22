@@ -27,7 +27,7 @@ function ListMovie() {
         },
       },
       {
-        breakpoint: 992,
+        breakpoint: 1200,
         settings: {
           arrows: false,
         },

@@ -11,11 +11,14 @@ import rapGalaxy from "./../../assets/img/galaxyrap.jpg";
 import rapCGV from "./../../assets/img/cgvrap.jpg";
 import rapLotte from "./../../assets/img/lotteRap.jpg";
 import rapMega from "./../../assets/img/megarap.jpg";
+import Loading from "../Loading/Loading";
+
 function RapChieu() {
   const dispatch = useDispatch();
   const heThongRap = useSelector((state) => state.rapChieuReducer.heThongRap);
   const cumRap = useSelector((state) => state.rapChieuReducer.cumRap);
   const [rapChieu, setRapChieu] = useState(rapBHD);
+  // const [loading, setLoading] = useState(false);
   useEffect(() => {
     dispatch(getListHeThongRapAction());
   }, [dispatch]);
@@ -64,17 +67,21 @@ function RapChieu() {
           style={{ width: 95, height: 100, objectFit: "cover" }}
         />
         <div className="content">
-          <p> {rap.tenCumRap} </p>
-          <p>{rap.diaChi}</p>
-          <a href="#" style={{ color: "black" }}>
+          <p className="tenCumRap"> {rap.tenCumRap} </p>
+          <p className="diaChi">{rap.diaChi}</p>
+
+          <span className="chiTietCumRap" href="#" style={{ color: "black" }}>
             Chi tiết
-          </a>
+          </span>
         </div>
       </a>
     ));
   };
   const handleChonRap = (rapPhim) => {
-    dispatch(getThongTinCumRap(rapPhim.maHeThongRap));
+    // setLoading(true);
+    dispatch(getThongTinCumRap(rapPhim.maHeThongRap)).then(() => {
+      // setLoading(false);
+    });
     // alert(rapPhim.maHeThongRap);
     switch (rapPhim.maHeThongRap) {
       case "BHDStar":
@@ -96,22 +103,31 @@ function RapChieu() {
   return (
     <div className="heThongRap">
       <div className="row">
-        <div
-          className="nav flex-column nav-pills"
-          id="v-pills-tab"
-          role="tablist"
-          aria-orientation="vertical"
-        >
-          {handleRenderNavHeader()}
-        </div>
-        <div
-          className="nav flex-column nav-pills"
-          id="v-pills-tab-2"
-          role="tablist"
-          aria-orientation="vertical"
-        >
-          {handleRenderNavContent()}
-        </div>
+        <>
+          <div
+            className="nav flex-column nav-pills col-sm-1"
+            id="v-pills-tab"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            {handleRenderNavHeader()}
+          </div>
+
+          <div
+            className="nav flex-column nav-pills col-sm-5"
+            id="v-pills-tab-2"
+            role="tablist"
+            aria-orientation="vertical"
+          >
+            {handleRenderNavContent()}
+          </div>
+          <div
+            className="nav flex-column nav-pills col-sm-6"
+            id="v-pills-tab-2"
+            role="tablist"
+            aria-orientation="vertical"
+          ></div>
+        </>
       </div>
     </div>
   );
