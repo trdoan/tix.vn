@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Loading from "./../../components/Loading/Loading";
+import Loading from "./../../components/Loading/Loading.component";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {

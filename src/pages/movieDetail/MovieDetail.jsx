@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailMovieAction } from "../../store/actions/movie.action";
-import Loading from "./../../components/Loading/Loading";
+import Loading from "../../components/Loading/Loading.component";
 import Footer from "./../../components/Footer/Footer.component";
 import dateFormat from "dateformat";
 

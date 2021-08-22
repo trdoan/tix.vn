@@ -11,7 +11,7 @@ import rapGalaxy from "./../../assets/img/galaxyrap.jpg";
 import rapCGV from "./../../assets/img/cgvrap.jpg";
 import rapLotte from "./../../assets/img/lotteRap.jpg";
 import rapMega from "./../../assets/img/megarap.jpg";
-import Loading from "../Loading/Loading";
+import Loading from "../Loading/Loading.component";
 
 function RapChieu() {
   const dispatch = useDispatch();
