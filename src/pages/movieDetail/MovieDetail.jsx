@@ -17,17 +17,11 @@ function MovieDetail() {
   useEffect(() => {
     dispatch(getDetailMovieAction(maPhim));
   }, [dispatch, maPhim]);
-
+  // test cm
   const movieDetail = useSelector((state) => state.movieReducer.movieDetail);
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
-  const {
-    tenPhim,
-    trailer,
-    hinhAnh,
-    ngayKhoiChieu,
-    lichChieu,
-    danhGia,
-  } = movieDetail;
+  const { tenPhim, trailer, hinhAnh, ngayKhoiChieu, lichChieu, danhGia } =
+    movieDetail;
 
   // lấy thông tin chi tiết phim lịch chiếu,...
 
