@@ -1,4 +1,4 @@
-@media screen and (min-width: 737px) {
+@media screen and (min-width: 768px) {
   .toggleButtonSideBar {
     display: none !important;
   }
@@ -6,7 +6,7 @@
 .buttonShowSidebar {
   display: none;
 }
-@media screen and(max-width:738px) {
+@media screen and(max-width:767px) {
   .buttonShowSidebar {
     display: block;
   }

@@ -1,8 +1,8 @@
 import React from "react";
-import logoApple from "./../../img/applelogo.png";
-import logoAndroid from "./../../img/androidlogo.png";
-import logoFacebook from "./../../img/facebooklogo.png";
-import logoZalo from "./../../img/zalologo.png";
+import logoApple from "./../../assets/img/applelogo.png";
+import logoAndroid from "./../../assets/img/androidlogo.png";
+import logoFacebook from "./../../assets/img/facebooklogo.png";
+import logoZalo from "./../../assets/img/zalologo.png";
 import dataFooter from "./dataFooter";
 import "./footer.scss";
 const renderDanhSachDoiTac = () => {

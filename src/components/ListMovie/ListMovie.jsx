@@ -1,17 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+
 import { useSelector } from "react-redux";
 
-import { thayDoiDanhSachPhimAction } from "../../store/actions/common.action";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import Slider from "react-slick";
-import { useHistory } from "react-router-dom";
+
 import "slick-carousel/slick/slick.css";
 import "./../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./ListMovie.scss";
 function ListMovie() {
-  const dispatch = useDispatch();
-  const history = useHistory();
   const settings = {
     dots: false,
     infinite: true,
@@ -22,6 +19,14 @@ function ListMovie() {
     arrows: true,
     responsive: [
       {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows: false,
+        },
+      },
+      {
         breakpoint: 992,
         settings: {
           arrows: false,
@@ -31,9 +36,7 @@ function ListMovie() {
   };
   const listMovie = useSelector((state) => state.movieReducer.listMovie);
   const listMovie2 = useSelector((state) => state.movieReducer.listMovie2);
-  const handleSelectListMovie = (e) => {
-    dispatch(thayDoiDanhSachPhimAction());
-  };
+
   // render danh sách phim
   const handleRenderDanhSachPhim = (loaiChieu = true) => {
     if (loaiChieu) {

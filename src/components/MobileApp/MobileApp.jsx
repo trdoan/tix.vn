@@ -1,20 +1,20 @@
 import React from "react";
 import "./MobileApp.scss";
-import mobile from "./../../img/mobile.png";
+import mobile from "./../../assets/img/mobile.png";
 import Slider from "react-slick";
 
-import slide1 from "./../../img/slide1.jpg";
-import slide2 from "./../../img/slide2.jpg";
-import slide3 from "./../../img/slide3.jpg";
-import slide4 from "./../../img/slide4.jpg";
-import slide5 from "./../../img/slide5.jpg";
-import slide6 from "./../../img/slide6.jpg";
-import slide7 from "./../../img/slide7.jpg";
-import slide8 from "./../../img/slide8.jpg";
-import slide9 from "./../../img/slide9.jpg";
-import slide10 from "./../../img/slide10.jpg";
-import slide11 from "./../../img/slide11.jpg";
-import slide12 from "./../../img/slide12.jpg";
+import slide1 from "./../../assets/img/slide1.jpg";
+import slide2 from "./../../assets/img/slide2.jpg";
+import slide3 from "./../../assets/img/slide3.jpg";
+import slide4 from "./../../assets/img/slide4.jpg";
+import slide5 from "./../../assets/img/slide5.jpg";
+import slide6 from "./../../assets/img/slide6.jpg";
+import slide7 from "./../../assets/img/slide7.jpg";
+import slide8 from "./../../assets/img/slide8.jpg";
+import slide9 from "./../../assets/img/slide9.jpg";
+import slide10 from "./../../assets/img/slide10.jpg";
+import slide11 from "./../../assets/img/slide11.jpg";
+import slide12 from "./../../assets/img/slide12.jpg";
 function MobileApp() {
   // console.log(slide1);
   const setting = {
@@ -79,6 +79,7 @@ function MobileApp() {
                   className="tagA"
                   target="_blank"
                   href="https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8"
+                  rel="noreferrer"
                 >
                   iOS
                 </a>
@@ -87,6 +88,7 @@ function MobileApp() {
                   className="tagA"
                   target="_blank"
                   href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
+                  rel="noreferrer"
                 >
                   Android
                 </a>

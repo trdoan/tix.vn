@@ -75,9 +75,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInPage() {
-  console.log("render SignInPage");
   const classes = useStyles();
-  // handleChangeInput
 
   const [user, setUser] = useState({
     taiKhoan: "",

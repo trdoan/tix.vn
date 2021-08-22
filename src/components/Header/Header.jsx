@@ -49,21 +49,12 @@ export default function Header() {
       .getElementsByClassName("profileWrapper")[0]
       .classList.toggle("d-block");
   };
-  // document.onload = function () {
-  //   var divToHide = document.getElementById("profileWrapper");
-  //   window.onclick = function (e) {
-  //     if (e.target.id !== "profileWrapper" && divToHide.style !== null) {
-  //       //element clicked wasn't the div; hide the div
-  //       console.log(divToHide);
-  //       // divToHide.style.display = "none";
-  //     }
-  //   };
-  // };
+
   return (
     <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
         <Toolbar>
-          <Link to="/" exact>
+          <Link to="/" exact={`true`}>
             <img
               src="https://tix.vn/app/assets/img/icons/web-logo.png"
               alt="logo"
@@ -71,29 +62,29 @@ export default function Header() {
             />
           </Link>
           <div className="navbar__header">
-            <Link to="/" className="nav-link-item" exact>
+            <Link to="/" className="nav-link-item" exact={`true`}>
               <Typography variant="h6" className={classes.title}>
                 Lịch Chiếu
               </Typography>
             </Link>
-            <Link to="/chi-tiet-phim" exact className="nav-link-item">
+            <Link to="/chi-tiet-phim" exact={`true`} className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Cụm rạp
               </Typography>
             </Link>
-            <Link to="/dat-ve" extract className="nav-link-item">
+            <Link to="/dat-ve" exact={`true`} className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Tin Tức
               </Typography>
             </Link>
-            <Link to="/dat-ve" extract className="nav-link-item">
+            <Link to="/dat-ve" exact={`true`} className="nav-link-item">
               <Typography variant="h6" className={classes.title}>
                 Ứng dụng
               </Typography>
             </Link>
           </div>
           {isLogin ? (
-            <Typography
+            <div
               className="loginHeader"
               style={{
                 position: "relative",
@@ -119,20 +110,24 @@ export default function Header() {
               </div>
               <div className="profileWrapper" id="profileWrapper">
                 <div className="arrow-up"></div>
-                <Link to="/profile" exact>
+                <Link to="/profile" exact={`true`}>
                   <AccountCircleIcon /> Hồ sơ
                 </Link>
                 <div className="">
-                  <Link onClick={() => dispatch(logoutAction(history))} exact>
+                  <Link
+                    to="/"
+                    onClick={() => dispatch(logoutAction(history))}
+                    exact={`true`}
+                  >
                     <ExitToAppIcon /> Đăng xuất
                   </Link>
                 </div>
               </div>
-            </Typography>
+            </div>
           ) : (
             <Link
               to="/dang-nhap"
-              exact
+              exact={`true`}
               className="nav-link-item"
               style={{ position: "relative" }}
             >

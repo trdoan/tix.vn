@@ -1,5 +1,5 @@
 import React from "react";
-import hinh from "./../../img/404.jpg";
+import hinh from "./../../assets/img/404.jpg";
 import "./Error.scss";
 function ErrorPage() {
   return (

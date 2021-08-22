@@ -1,12 +1,17 @@
 @import "node_modules/react-modal-video/scss/modal-video.scss";
 @font-face {
   font-family: "SF Medium";
-  src: url("./../../font/SF-UI-Display-Medium.otf");
+  src: url("./../../assets/font/SF-UI-Display-Medium.otf");
 }
 @font-face {
   font-family: "SF Text Regular";
-  src: url("./../../font/SF-UI-Text-Regular.otf");
+  src: url("./../../assets/font/SF-UI-Text-Regular.otf");
 }
+// .MuiButtonBase-root,
+// .MuiCard-root,
+// .MuiButtonBase-root {
+//   background-color: none;
+// }
 // reset Bootstrap
 .row {
   padding: 0 !important;
@@ -26,7 +31,27 @@
   //     width: auto;
   //   }
   // }
-
+  .cardItem {
+    max-height: 350px;
+    .datVe {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      margin: 10px auto;
+    }
+    &:hover {
+      .cardContent {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .datVe {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
   .slick-prev::before {
     background-image: url("https://tix.vn/app/assets/img/icons/back-session.png") !important;
     z-index: 999;
@@ -102,7 +127,7 @@
     left: 0%;
     z-index: 999;
     position: absolute;
-    background-image: url("./../../img/nextsession.png");
+    background-image: url("./../../assets/img/nextsession.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

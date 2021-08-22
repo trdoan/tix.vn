@@ -1,6 +1,6 @@
 @font-face {
   font-family: "SF Regular";
-  src: url("./../../font/SF-UI-Text-Regular.otf");
+  src: url("./../../assets/font/SF-UI-Text-Regular.otf");
 }
 .navbar__header {
   display: flex;
@@ -12,8 +12,10 @@
 .header {
   height: 60px;
   background-color: white !important;
-  // position: fixed;
-  z-index: 99999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
   width: 100%;
   .arrow-up {
     width: 0;

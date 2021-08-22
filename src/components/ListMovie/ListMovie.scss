@@ -8,10 +8,10 @@
   position: relative;
   // height: 900px;
   margin: 15px;
+  @media screen and(max-width:578px) {
+    margin-top: 60px;
+  }
   .container {
-    // @media screen and(max-width:330px) {
-    //   padding: 0;
-    // }
     @media screen and(max-width:736px) {
       padding: 0;
     }

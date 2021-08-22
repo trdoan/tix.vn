@@ -4,15 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
+
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import star1 from "./../../img/star1.png";
-import star1_2 from "./../../img/star1.2.png";
+import Button from "@material-ui/core/Button";
+
+import star1 from "./../../assets/img/star1.png";
+import star1_2 from "./../../assets/img/star1.2.png";
 import { modalOnAction } from "../../store/actions/common.action";
 import "./MovieCard.scss";
 
-import { getDetailMovieAction } from "../../store/actions/movie.action";
 import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
@@ -21,10 +22,13 @@ const useStyles = makeStyles({
     marginTop: 20,
     margin: "20px 10px ",
     // padding: "5px",
-    background: "#fff",
+    background: "none",
     boxShadow: "none",
     // maxHeight: 390,
-    height: 390,
+    // height: 390,
+    "&:hover": {
+      background: "none",
+    },
   },
   media: {
     // width: 220,
@@ -34,7 +38,6 @@ const useStyles = makeStyles({
 });
 
 export function MovieCard(props) {
-  const { loaiChieu } = props;
   const history = useHistory();
   const dispatch = useDispatch();
   const getId = (url) => {
@@ -53,7 +56,7 @@ export function MovieCard(props) {
   const videoId = getId(
     trailer == null ? "https://www.youtube.com/watch?v=j8U06veqxdU" : trailer
   );
-  const mangThoiGianPhim = [90, 100, 120, 180];
+
   let numberStar = 0;
   let arrStar = [];
   if (danhGia >= 8) {
@@ -84,11 +87,13 @@ export function MovieCard(props) {
   return (
     <>
       <Card
-        className={classes.root}
-        style={{ position: "relative" }}
-        onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+        className={classes.root + " cardItem"}
+        style={{ position: "relative", background: "none" }}
       >
-        <CardActionArea style={{ backgroundColor: "none" }}>
+        <CardActionArea
+          style={{ backgroundColor: "none" }}
+          onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+        >
           <CardMedia
             className={classes.media + " imgCardMedia"}
             image={hinhAnh.replace("http", "https")}
@@ -110,7 +115,18 @@ export function MovieCard(props) {
             </p>
           </CardContent>
         </CardActionArea>
-        {/* <CardActions></CardActions> */}
+        {/* <CardActions> */}
+        <div className="datVe">
+          <Button
+            color="primary"
+            variant="contained"
+            style={{ width: "100%" }}
+            onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+          >
+            Đặt vé
+          </Button>
+        </div>
+        {/* </CardActions> */}
 
         <div className="txtPoint ">
           <div className="danhGia">{danhGia}</div>

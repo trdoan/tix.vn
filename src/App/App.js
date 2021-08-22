@@ -1,16 +1,14 @@
 import "./App.css";
-import Header from "./components/Header/Header";
+import Header from "../components/Header/Header";
 
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import SignInPage from "./pages/dang-nhap/dang-nhap.page";
-import HomePage from "./pages/home/home.page";
-import Sidebar from "./components/Sidebar/Sidebar.component";
-import Booking from "./pages/booking/Booking";
-import ErrorPage from "./pages/error/Error.jsx";
-import MovieDetail from "./pages/movieDetail/MovieDetail";
-import { useSelector } from "react-redux";
-import Loading from "./components/Loading/loading";
+import SignInPage from "../pages/dang-nhap/dang-nhap.page";
+import HomePage from "../pages/home/home.page";
+
+import Booking from "../pages/booking/Booking";
+import ErrorPage from "../pages/error/Error.jsx";
+import MovieDetail from "../pages/movieDetail/MovieDetail";
 
 function App() {
   return (
@@ -30,11 +28,7 @@ function App() {
           <Route path="/chi-tiet-phim/:maPhim" exact>
             <MovieDetail />
           </Route>
-          <Route path="/test" exact>
-            {/* <Sidebar /> */}
-            <ErrorPage />
-            {/* <ListLocation /> */}
-          </Route>
+          <Route path="/test" exact></Route>
           <Route path="/booking" exact>
             <Booking />
           </Route>

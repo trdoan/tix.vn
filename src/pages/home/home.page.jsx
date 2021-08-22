@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Loading from "../../components/Loading/loading";
+import Loading from "./../../components/Loading/Loading";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -19,24 +19,18 @@ import ListMovie from "../../components/ListMovie/ListMovie";
 import MobileApp from "../../components/MobileApp/MobileApp";
 
 function HomePage() {
-  //
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
   //
-  const maNhomMovieList = useSelector(
-    (state) => state.commonReducer.maNhomMovieList
-  );
-  const maNhomPhim = maNhomMovieList ? "GP07" : "GP08";
+  const isModal = useSelector((state) => state.commonReducer.isModal);
+  const videoId = useSelector((state) => state.commonReducer.videoModalId);
   //   get data render ra giao diện
   useEffect(() => dispatch(getListMovieAction()), [dispatch]);
   useEffect(() => dispatch(getListMovieAction2()), [dispatch]);
   // console.log(maNhomPhim);
   console.log("isLoading:  ", isLoading);
   // xử lý modal
-  const isModal = useSelector((state) => state.commonReducer.isModal);
-  const videoId = useSelector((state) => state.commonReducer.videoModalId);
 
-  const clickOutSide = () => {};
   return isLoading ? (
     <Loading />
   ) : (
@@ -47,13 +41,15 @@ function HomePage() {
         <ListMovie />
         <MobileApp />
         <Footer />
-        <ModalVideo
-          channel="youtube"
-          autoplay
-          isOpen={isModal}
-          videoId={videoId}
-          onClose={() => dispatch(modalOffAction())}
-        />
+        {isModal ? (
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isModal}
+            videoId={videoId}
+            onClose={() => dispatch(modalOffAction())}
+          />
+        ) : null}
       </React.Fragment>
     </>
   );
