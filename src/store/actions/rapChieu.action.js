@@ -45,7 +45,7 @@ export const getThongTinLichChieuRap = (maHeThongRap) => {
     // dispatch(loadingOnAction());
     try {
       const res = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP01
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP10
         `,
         method: "GET",
       });

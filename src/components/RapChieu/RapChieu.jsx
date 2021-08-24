@@ -12,6 +12,7 @@ import rapCGV from "./../../assets/img/cgvrap.jpg";
 import rapLotte from "./../../assets/img/lotteRap.jpg";
 import rapMega from "./../../assets/img/megarap.jpg";
 import Loading from "../Loading/Loading.component";
+import { getLichChieuPhimCumRap } from "../../store/actions/movie.action";
 
 function RapChieu() {
   const dispatch = useDispatch();
@@ -21,13 +22,19 @@ function RapChieu() {
   // const [loading, setLoading] = useState(false);
   useEffect(() => {
     dispatch(getListHeThongRapAction());
+    dispatch(getThongTinCumRap("BHDStar"));
+    dispatch(getLichChieuPhimCumRap("BHDStar"));
   }, [dispatch]);
   const handleRenderNavHeader = () => {
     return heThongRap?.map((rapPhim, index) => {
       return (
         <a
           key={index}
-          className={"nav-link d-flex align-items-center "}
+          className={
+            index === 0
+              ? "nav-link d-flex align-items-center active"
+              : "nav-link d-flex align-items-center "
+          }
           data-toggle="pill"
           href={`#${rapPhim.biDanh}`}
           role="tab"
@@ -80,7 +87,7 @@ function RapChieu() {
   const handleChonRap = (rapPhim) => {
     // setLoading(true);
     dispatch(getThongTinCumRap(rapPhim.maHeThongRap)).then(() => {
-      // setLoading(false);
+      dispatch(getLichChieuPhimCumRap(rapPhim.maHeThongRap));
     });
     // alert(rapPhim.maHeThongRap);
     switch (rapPhim.maHeThongRap) {
@@ -123,10 +130,12 @@ function RapChieu() {
           </div>
           <div
             className="nav flex-column nav-pills col-sm-6"
-            id="v-pills-tab-2"
+            id="v-pills-tab-3"
             role="tablist"
             aria-orientation="vertical"
-          ></div>
+          >
+            Vui long chon rum rap
+          </div>
         </>
       </div>
     </div>

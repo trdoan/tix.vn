@@ -9,34 +9,39 @@ import HomePage from "../pages/home/home.page";
 import Booking from "../pages/booking/Booking";
 import ErrorPage from "../pages/error/Error.jsx";
 import MovieDetail from "../pages/movieDetail/MovieDetail";
+import Modal from "../components/Modal/Modal.component";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/dang-nhap" exact>
-            <SignInPage />
-          </Route>
-          <Route path="/dat-ve" exact>
-            <h1>Đặt vé</h1>
-          </Route>
-          <Route path="/chi-tiet-phim/:maPhim" exact>
-            <MovieDetail />
-          </Route>
-          <Route path="/test" exact></Route>
-          <Route path="/booking" exact>
-            <Booking />
-          </Route>
-          <Route path="">
-            <ErrorPage />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <React.Fragment>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/dang-nhap" exact>
+              <SignInPage />
+            </Route>
+            <Route path="/dat-ve" exact>
+              <h1>Đặt vé</h1>
+            </Route>
+            <Route path="/chi-tiet-phim/:maPhim" exact>
+              <MovieDetail />
+            </Route>
+            <Route path="/test" exact>
+              <Modal />
+            </Route>
+            <Route path="/booking" exact>
+              <Booking />
+            </Route>
+            <Route path="">
+              <ErrorPage />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </React.Fragment>
     </>
   );
 }

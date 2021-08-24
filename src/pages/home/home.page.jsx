@@ -36,24 +36,23 @@ function HomePage() {
   ) : (
     <>
       {console.log("RENDER HOME PAGE")}
-      <React.Fragment>
-        <Carousel />
-        <ListMovie />
-        <div className="container">
-          <RapChieu />
-        </div>
-        <MobileApp />
-        <Footer />
-        {isModal ? (
-          <ModalVideo
-            channel="youtube"
-            autoplay
-            isOpen={isModal}
-            videoId={videoId}
-            onClose={() => dispatch(modalOffAction())}
-          />
-        ) : null}
-      </React.Fragment>
+
+      <Carousel />
+      <ListMovie />
+      <div className="container">
+        <RapChieu />
+      </div>
+      <MobileApp />
+      <Footer />
+      {isModal ? (
+        <ModalVideo
+          channel="youtube"
+          autoplay
+          isOpen={isModal}
+          videoId={videoId}
+          onClose={() => dispatch(modalOffAction())}
+        />
+      ) : null}
     </>
   );
 }

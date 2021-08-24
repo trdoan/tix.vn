@@ -2,12 +2,14 @@ import {
   GET_DETAIL_MOVIE,
   GET_LIST_MOVIE,
   GET_MOVIE_2,
+  LAY_THONG_TIN_LICH_CHIEU_PHIM,
 } from "../constants/movie.const";
 
 const initialState = {
   listMovie: [],
   listMovie2: [],
   movieDetail: [],
+  lichChieuTheoRap: [],
 };
 
 export const movieReducer = (state = initialState, action) => {
@@ -21,6 +23,9 @@ export const movieReducer = (state = initialState, action) => {
       return { ...state };
     case GET_DETAIL_MOVIE:
       state.movieDetail = payload;
+      return { ...state };
+    case LAY_THONG_TIN_LICH_CHIEU_PHIM:
+      state.lichChieuTheoRap = payload;
       return { ...state };
     default:
       return state;

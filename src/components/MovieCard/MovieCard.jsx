@@ -92,7 +92,7 @@ export function MovieCard(props) {
       >
         <CardActionArea
           style={{ backgroundColor: "none" }}
-          onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+          // onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
         >
           <CardMedia
             className={classes.media + " imgCardMedia"}

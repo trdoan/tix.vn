@@ -59,11 +59,11 @@ export const getDetailMovieAction = (maPhim) => {
   };
 };
 
-export const getLichChieuPhim = (maPhim) => {
+export const getLichChieuPhimCumRap = (maHeThongRap) => {
   return async (dispatch) => {
     try {
       const res = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP10
         `,
         method: "GET",
       });
