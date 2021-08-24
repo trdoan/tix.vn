@@ -26,6 +26,11 @@
   .imgCardMedia:hover .trailerMovie {
     opacity: 1;
     display: block;
+
+    @media screen and(max-width:1200px) {
+      display: none;
+      opacity: 0;
+    }
   }
   .trailerMovie {
     display: none;

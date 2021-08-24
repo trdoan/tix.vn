@@ -16,18 +16,20 @@ function App() {
     <>
       <React.Fragment>
         <BrowserRouter>
-          <Header />
           <Switch>
             <Route path="/" exact>
+              <Header />
               <HomePage />
             </Route>
             <Route path="/dang-nhap" exact>
               <SignInPage />
             </Route>
             <Route path="/dat-ve" exact>
+              <Header />
               <h1>Đặt vé</h1>
             </Route>
             <Route path="/chi-tiet-phim/:maPhim" exact>
+              <Header />
               <MovieDetail />
             </Route>
             <Route path="/test" exact>

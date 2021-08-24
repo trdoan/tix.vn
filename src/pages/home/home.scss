@@ -7,12 +7,7 @@
   font-family: "SF Text Regular";
   src: url("./../../assets/font/SF-UI-Text-Regular.otf");
 }
-// .MuiButtonBase-root,
-// .MuiCard-root,
-// .MuiButtonBase-root {
-//   background-color: none;
-// }
-// reset Bootstrap
+
 .row {
   padding: 0 !important;
   margin: 0 !important;
@@ -22,15 +17,6 @@
 }
 
 .danhSachPhim {
-  // .slick-slider {
-  //   width: 980px;
-  //   max-width: 1200px;
-  //   margin: auto;
-
-  //   .slick-active {
-  //     width: auto;
-  //   }
-  // }
   .cardItem {
     max-height: 350px;
     .datVe {
@@ -41,14 +27,19 @@
     }
     &:hover {
       .cardContent {
-        display: none;
-        opacity: 0;
-        visibility: hidden;
+        @media screen and(min-width:1200px) {
+          display: none;
+          opacity: 0;
+          visibility: hidden;
+        }
       }
       .datVe {
         display: block;
         opacity: 1;
         visibility: visible;
+        @media screen and(max-width:737px) {
+          display: none;
+        }
       }
     }
   }

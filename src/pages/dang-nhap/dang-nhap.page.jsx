@@ -16,7 +16,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { loginAction } from "../../store/actions/auth.action";
 import { useDispatch } from "react-redux";
-
+import logo from "./../../assets/img/logoLogin.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import optionLoginTix from "./../../assets/img/tixLogin.png";
 import "./login.scss";
 function Copyright() {
   return (
@@ -73,7 +76,16 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
+const notify = () =>
+  toast.info("Tính năng đang được cập nhật", {
+    position: "top-right",
+    autoClose: 3500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 export default function SignInPage() {
   const classes = useStyles();
 
@@ -97,98 +109,50 @@ export default function SignInPage() {
     dispatch(loginAction(user, history));
   };
   return (
-    <React.Fragment>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid item xs={false} sm={5} md={7} className={classes.image} />
-        <Grid
-          item
-          xs={12}
-          sm={7}
-          md={5}
-          component={Paper}
-          elevation={6}
-          square
-          style={{ position: "relative" }}
-        >
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Đăng nhập
-            </Typography>
-            <form
-              onSubmit={handleSubmitLogin}
-              className={classes.form}
-              noValidate
-            >
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="taiKhoan"
-                label="Email"
-                name="taiKhoan"
-                autoComplete="taiKhoan"
-                autoFocus
-                onChange={handleChangeInput}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="matKhau"
-                label="Mật khẩu"
-                type="password"
-                id="matKhau"
-                autoComplete="current-password"
-                onChange={handleChangeInput}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Duy trì đăng nhập"
-              />
-              <Typography
-                className="alert alert-danger text-center "
-                id="notifiLogin"
-              ></Typography>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Đăng Nhập
-              </Button>
-
-              <Grid container>
-                <Grid item xs>
-                  <Link to="/test" variant="body2" className="nav-link">
-                    Quên mật khẩu
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link
-                    to="/test"
-                    variant="body2"
-                    exact="true"
-                    className="nav-link"
-                  >
-                    {"Chưa có tài khoản? Đăng ký"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Box mt={5}>
-                <Copyright />
-              </Box>
-            </form>
+    <div className="login">
+      <div className="signin--wrapper">
+        <img
+          src="https://tix.vn/app/assets/img/icons/web-logo.png"
+          alt="logoLogin"
+          className="logoLogin"
+        />
+        <form className noValidate autoComplete="false">
+          <TextField id="taiKhoan" label="Tài khoản" autoComplete="false" />
+          <TextField id="matKhau" label="Mật khẩu" type="password" />
+        </form>
+        <div className="loginOption">
+          <div className="login__item " onClick={notify}>
+            <img
+              src={optionLoginTix}
+              alt="login with tix"
+              className="img-fluid"
+            />
           </div>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+          <div className="login__item " onClick={notify}>
+            <img
+              src="https://tix.vn/app/assets/img/login/btn-FB.png"
+              alt="login with facebook"
+              className="img-fluid"
+            />
+          </div>
+          <div className="login__item " onClick={notify}>
+            <img
+              src="https://tix.vn/app/assets/img/login/btn-Zalo.png"
+              alt=""
+              className="img-fluid"
+            />
+          </div>{" "}
+          <div className="login__item " onClick={notify}>
+            <img
+              src="https://tix.vn/app/assets/img/login/btn-Google.png"
+              alt=""
+              className="img-fluid"
+            />
+          </div>
+          <div className="closeLogin"></div>
+        </div>
+      </div>
+      <ToastContainer />
+    </div>
   );
 }

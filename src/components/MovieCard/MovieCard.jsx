@@ -106,7 +106,10 @@ export function MovieCard(props) {
             ></div>
           </CardMedia>
 
-          <CardContent className="cardContent">
+          <CardContent
+            className="cardContent"
+            onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+          >
             <p className="titleMovie">
               {/* <span className={loaiChieu ? "typeMovie" : "typeMovie-2"}>
                 {loaiChieu ? "C18" : "P"}
