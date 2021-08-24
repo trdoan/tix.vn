@@ -86,6 +86,17 @@ const notify = () =>
     draggable: true,
     progress: undefined,
   });
+export const reLogin = (mess) => {
+  toast.error(`${mess}. Hãy đăng nhập lại`, {
+    position: "top-right",
+    autoClose: 3500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+};
 export default function SignInPage() {
   const classes = useStyles();
 
@@ -116,16 +127,29 @@ export default function SignInPage() {
           alt="logoLogin"
           className="logoLogin"
         />
-        <form className noValidate autoComplete="false">
-          <TextField id="taiKhoan" label="Tài khoản" autoComplete="false" />
-          <TextField id="matKhau" label="Mật khẩu" type="password" />
+        <form className noValidate onSubmit={handleSubmitLogin}>
+          <TextField
+            id="taiKhoan"
+            label="Tài khoản"
+            type="text"
+            name="taiKhoan"
+            onChange={(e) => handleChangeInput(e)}
+          />
+          <TextField
+            id="matKhau"
+            label="Mật khẩu"
+            type="password"
+            name="matKhau"
+            onChange={(e) => handleChangeInput(e)}
+          />{" "}
         </form>
         <div className="loginOption">
-          <div className="login__item " onClick={notify}>
+          <div className="login__item " onClick={(e) => handleSubmitLogin(e)}>
             <img
               src={optionLoginTix}
               alt="login with tix"
               className="img-fluid"
+              autoComplete="false"
             />
           </div>
           <div className="login__item " onClick={notify}>
@@ -149,7 +173,7 @@ export default function SignInPage() {
               className="img-fluid"
             />
           </div>
-          <div className="closeLogin"></div>
+          <div className="closeLogin" onClick={() => history.push("/")}></div>
         </div>
       </div>
       <ToastContainer />
