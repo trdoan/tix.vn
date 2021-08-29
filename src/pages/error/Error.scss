@@ -1,16 +1,62 @@
-.pageError {
-  padding-top: 60px;
-
-  h2 {
-    color: #fb4226;
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  // font-family: "Arvo", serif;
+  img {
+    width: 100%;
   }
-
-  @media screen and (max-width: 767px) {
-    .contentError {
-      order: 1;
+  .four_zero_four_bg {
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+    h1 {
+      font-size: 80px;
     }
-    .imgContainer {
-      order: 2;
+    h3 {
+      font-size: 80px;
     }
   }
+  .link_404 {
+    position: relative;
+    color: white;
+    padding: 10px 20px;
+    background: #fb4226;
+    margin: 20px 0;
+    display: inline-block;
+    text-decoration: none;
+    font-family: "SF Regular";
+    transition: all 0.5s;
+    z-index: 99;
+    border-radius: 5px;
+    border: 1px solid #fb4226;
+
+    .text {
+      position: relative;
+      z-index: 999;
+    }
+    &::after {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      content: "";
+      width: 0%;
+      height: 100%;
+      background-color: white;
+      z-index: 9;
+      transition: all 0.5s;
+      border-radius: inherit;
+    }
+    &:hover {
+      &::after {
+        width: 100%;
+        // border: 1px solid #fb4226;
+      }
+      color: #fb4226;
+    }
+  }
+}
+
+.page_404 .four_zero_four_bg .four_zero_four_bg .contant_box_404 {
+  margin-top: -50px;
 }
