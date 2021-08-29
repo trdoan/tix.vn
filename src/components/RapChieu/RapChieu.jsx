@@ -86,26 +86,28 @@ function RapChieu() {
   };
   const handleChonRap = (rapPhim) => {
     // setLoading(true);
+
     dispatch(getThongTinCumRap(rapPhim.maHeThongRap)).then(() => {
       dispatch(getLichChieuPhimCumRap(rapPhim.maHeThongRap));
+      switch (rapPhim.maHeThongRap) {
+        case "BHDStar":
+          return setRapChieu(rapBHD);
+        case "CGV":
+          return setRapChieu(rapCGV);
+        case "CineStar":
+          return setRapChieu(rapCNS);
+        case "Galaxy":
+          return setRapChieu(rapGalaxy);
+        case "LotteCinima":
+          return setRapChieu(rapLotte);
+        case "MegaGS":
+          return setRapChieu(rapMega);
+        default:
+          break;
+      }
     });
+
     // alert(rapPhim.maHeThongRap);
-    switch (rapPhim.maHeThongRap) {
-      case "BHDStar":
-        return setRapChieu(rapBHD);
-      case "CGV":
-        return setRapChieu(rapCGV);
-      case "CineStar":
-        return setRapChieu(rapCNS);
-      case "Galaxy":
-        return setRapChieu(rapGalaxy);
-      case "LotteCinima":
-        return setRapChieu(rapLotte);
-      case "MegaGS":
-        return setRapChieu(rapMega);
-      default:
-        break;
-    }
   };
   return (
     <div className="heThongRap">

@@ -1,9 +1,9 @@
 .carousel {
   width: 100%;
-
+  font-family: "SF Text Regular";
   max-height: 680px;
-  overflow: hidden;
-
+  // overflow-x: hidden;
+  font-weight: 400;
   .itemCarousel {
     padding: 0;
     // height: 680px;
@@ -46,5 +46,148 @@
     .carousel {
       display: none;
     }
+  }
+  .my-dropdown {
+    position: relative;
+    height: 100%;
+    // border: 1px solid;
+    // nút
+    button {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      &.btn.focus,
+      &.btn:focus {
+        box-shadow: none;
+      }
+      &.btn.dropdown-toggle {
+        &:not(:last-child) {
+        }
+        // position: absolute;
+        // top: 50%;
+        // transform: translateY(-50%);
+        // left: 0;
+        // background-color: transparent;
+        // border: none;
+        // color: #000;
+        // cursor: pointer;
+        // width: 100%;
+        // padding: 7%;
+        // background-repeat: no-repeat;
+        // background-position: calc(100% - 8px);
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // padding-right: 20px;
+        // background-image: url("./../../assets/img/dropdownicon.png");
+        // padding: 0 10px;
+        position: absolute;
+        left: 0;
+        background-color: transparent;
+        border: none;
+        color: #000;
+        cursor: pointer;
+        width: 100%;
+        // padding: 7%;
+        background-image: url("./../../assets/img/dropdownicon.png");
+        background-repeat: no-repeat;
+        background-position: calc(100% - 5px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // padding-right: 20px;
+      }
+
+      &:not(:last-child):after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        top: 50%;
+        border: none;
+        transform: translateY(-50%);
+        border-right: 1px solid #fff;
+        border-right-color: rgba(238, 238, 238, 0.88);
+      }
+    }
+    &:last-child {
+      height: 80%;
+    }
+  }
+  // danh sách show
+
+  .dropdown-menu {
+    position: absolute;
+    top: 50% !important;
+    left: 0;
+    max-height: 350px;
+    overflow-y: scroll;
+    transform: translateY(10%) !important;
+    .dropdown-item {
+      transition: all 0.25s;
+      &:hover,
+      &:active {
+        background-color: #60c5ef;
+        color: white;
+      }
+    }
+  }
+  .homeTools {
+    display: block;
+    max-width: 940px;
+    margin: auto;
+    height: 80px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 30%);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.356);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9;
+    @media screen and (max-width: 992px) {
+      display: none !important;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #eee;
+
+    // border-radius: 13px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(190, 190, 190);
+
+    border-radius: 13px;
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background: transparent !important;
+  }
+  .muaVePhim {
+    transition: all 0.5s;
+    text-align: center !important;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    height: 80% !important;
+    background-color: #4a4a4a;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // padding: 10px 25px;
   }
 }

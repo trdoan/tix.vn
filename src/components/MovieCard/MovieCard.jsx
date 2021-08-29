@@ -50,7 +50,7 @@ export function MovieCard(props) {
 
   // console.log(videoId)
   const classes = useStyles();
-
+  const { loaiChieu } = props;
   const { maPhim, tenPhim, danhGia, hinhAnh, trailer } = props.movie;
   // console.log());
   const videoId = getId(
@@ -89,6 +89,7 @@ export function MovieCard(props) {
       <Card
         className={classes.root + " cardItem"}
         style={{ position: "relative", background: "none" }}
+        // onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
       >
         <CardActionArea
           style={{ backgroundColor: "none" }}
@@ -119,6 +120,7 @@ export function MovieCard(props) {
           </CardContent>
         </CardActionArea>
         {/* <CardActions> */}
+
         <div className="datVe">
           <Button
             color="primary"
@@ -129,6 +131,7 @@ export function MovieCard(props) {
             Đặt vé
           </Button>
         </div>
+
         {/* </CardActions> */}
 
         <div className="txtPoint ">

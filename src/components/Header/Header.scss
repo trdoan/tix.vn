@@ -2,6 +2,7 @@
   font-family: "SF Regular";
   src: url("./../../assets/font/SF-UI-Text-Regular.otf");
 }
+@import url(./../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css);
 .navbar__header {
   display: flex;
   padding: 0 20px;
@@ -12,7 +13,7 @@
 .header {
   height: 60px;
   background-color: white !important;
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
