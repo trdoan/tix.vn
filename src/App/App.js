@@ -24,9 +24,9 @@ function App() {
             <Route path="/dang-nhap" exact>
               <SignInPage />
             </Route>
-            <Route path="/dat-ve" exact>
+            <Route path="/dat-ve/:maLichChieu" exact>
               <Header />
-              <h1>Đặt vé</h1>
+              <Booking />
             </Route>
             <Route path="/chi-tiet-phim/:maPhim" exact>
               <Header />

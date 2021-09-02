@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import { modalOnAction } from "../../store/actions/common.action";
 import "./Carousel.scss";
 import { layThongTinLichChieuPhim } from "../../store/actions/rapChieu.action";
+import { useHistory } from "react-router-dom";
 // let danhSachCumRap = [];
 function Carousel() {
   const dispatch = useDispatch();
@@ -18,10 +19,11 @@ function Carousel() {
   const [suatChieu, setSuatChieu] = useState([]);
   const [cumRap, setCumRap] = useState("Rạp");
   const [suatChieuDangChon, setSuatChieuDangChon] = useState("Suất chiếu");
+  const [maLichChieu, setMaLichChieu] = useState("");
   const listHeThongRapChieuPhim = useSelector(
     (state) => state.rapChieuReducer.cumRapChieuPhim.heThongRapChieu
   );
-
+  const history = useHistory();
   // const [suatChieu, setSuatChieu] = useState([]);
   const setting = {
     dots: true,
@@ -80,10 +82,11 @@ function Carousel() {
         setSuatChieu(data.lichChieuPhim);
         setSuatChieuDangChon("Suất chiếu");
 
-        console.log("lichchieu:", data.lichChieuPhim);
+        // console.log("lichchieu:", data.lichChieuPhim);
         break;
       case "CHON_SUAT_CHIEU":
-        console.log(data.tenRap);
+        console.log(data.maLichChieu);
+        setMaLichChieu(data.maLichChieu);
         setSuatChieuDangChon(
           data.tenRap +
             " - lúc " +
@@ -211,13 +214,6 @@ function Carousel() {
                       suatChieuItem.ngayChieuGioChieu,
                       "hh:mm - ngày dd/mm/yyyy"
                     )}
-                  {console.log(suatChieuItem.ngayChieuGioChieu, "dd/mm/yyyy")}
-                  {console.log(
-                    dateFormat(
-                      suatChieuItem.ngayChieuGioChieu,
-                      "lúc hh:mm dd/mm/yyyy"
-                    )
-                  )}
                 </button>
               );
             })}
@@ -227,6 +223,9 @@ function Carousel() {
         <div className="my-dropdown col-2">
           <button
             className="muaVePhim"
+            onClick={() => {
+              history.push(`/dat-ve/${maLichChieu}`);
+            }}
             disabled={
               phim !== "Phim" &&
               heThongRap !== "Hệ thống rạp" &&
@@ -240,7 +239,7 @@ function Carousel() {
               heThongRap !== "Hệ thống rạp" &&
               cumRap !== "Rạp" &&
               suatChieuDangChon !== "Suất chiếu"
-                ? { backgroundColor: "#fb4226" }
+                ? { backgroundColor: "#fa5238" }
                 : null
             }
           >
