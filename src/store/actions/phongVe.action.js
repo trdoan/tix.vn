@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LAY_TT_PHONG_VE } from "../constants/phongVe.const";
+import { CHON_GHE, LAY_TT_PHONG_VE } from "../constants/phongVe.const";
 import { loadingOffAction, loadingOnAction } from "./common.action";
 
 export const layThongTinPhongVe = (maLichChieu) => {
@@ -14,5 +14,12 @@ export const layThongTinPhongVe = (maLichChieu) => {
       dispatch({ type: LAY_TT_PHONG_VE, payload: res.data });
       dispatch(loadingOffAction());
     } catch (error) {}
+  };
+};
+
+export const chonGheAction = (chair) => {
+  return {
+    type: CHON_GHE,
+    payload: chair,
   };
 };

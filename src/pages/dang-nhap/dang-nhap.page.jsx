@@ -21,27 +21,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import optionLoginTix from "./../../assets/img/tixLogin.png";
 import "./login.scss";
-function Copyright() {
-  return (
-    <Typography
-      variant="body2"
-      align="center"
-      style={{
-        position: "absolute",
-        bottom: 15,
-        left: "50%",
-        transform: "translate(-50%,-50%)",
-      }}
-    >
-      {"Copyright © "}
-      <Link to="/" style={{ color: "#fa5238" }}>
-        trddoan{" "}
-      </Link>
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -142,31 +121,45 @@ export default function SignInPage() {
             name="matKhau"
             onChange={(e) => handleChangeInput(e)}
           />{" "}
-        </form>
-        <div className="loginOption">
-          <div className="login__item " onClick={(e) => handleSubmitLogin(e)}>
+          <div
+            id="notiMessage"
+            className="text-danger"
+            style={{ textAlign: "left", marginRight: "auto", fontSize: 14 }}
+          ></div>
+          <button
+            type="submit"
+            className="login__item "
+            onClick={(e) => handleSubmitLogin(e)}
+            style={{
+              border: "none",
+              borderRadius: "5px",
+              padding: 0,
+            }}
+          >
             <img
               src={optionLoginTix}
               alt="login with tix"
               className="img-fluid"
               autoComplete="false"
             />
-          </div>
-          <div className="login__item " onClick={notify}>
+          </button>
+        </form>
+        <div className="loginOption">
+          <div className="login__item ">
             <img
               src="https://tix.vn/app/assets/img/login/btn-FB.png"
               alt="login with facebook"
               className="img-fluid"
             />
           </div>
-          <div className="login__item " onClick={notify}>
+          <div className="login__item ">
             <img
               src="https://tix.vn/app/assets/img/login/btn-Zalo.png"
               alt=""
               className="img-fluid"
             />
           </div>{" "}
-          <div className="login__item " onClick={notify}>
+          <div className="login__item ">
             <img
               src="https://tix.vn/app/assets/img/login/btn-Google.png"
               alt=""

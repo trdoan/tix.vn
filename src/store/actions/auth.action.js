@@ -1,5 +1,5 @@
 import axios from "axios";
-import { reLogin } from "../../pages/dang-nhap/dang-nhap.page";
+// import { reLogin } from "../../pages/dang-nhap/dang-nhap.page";
 
 import { LOGIN, LOGOUT } from "../constants/auth.const";
 
@@ -15,7 +15,10 @@ export const loginAction = (user, history) => {
 
       history.push("/");
     } catch (error) {
-      reLogin(error.response.data);
+      document.getElementById(
+        "notiMessage"
+      ).innerHTML = `(*) ${error.response.data}`;
+      // reLogin(error.response.data);
     }
   };
 };

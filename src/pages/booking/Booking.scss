@@ -3,23 +3,73 @@
   // background-color: #222222;
   margin-top: 60px;
   color: black;
-
-  .danhSachGhe {
-    min-width: 700px;
-    width: 100%;
-    max-width: 700px;
-    overflow: auto;
-
-    .gheDaDat {
-      color: #fdc22d !important;
-    }
-    .gheChuaDat {
-      // color: blue !important;
+  .row {
+    &:nth-child(1) {
+      padding-bottom: 60px !important;
     }
   }
+  .money-item {
+    margin-left: auto;
+    color: green;
+  }
+  .heading__element {
+    font-style: italic;
+    color: #fa5238;
+    &__child {
+      // font-style: italic;
+      font-size: 15px;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+  hr {
+    margin: 10px 0;
+  }
+  .thongTinVePhim {
+    margin-top: 60px;
+  }
+  .thongTinVePhim,
+  .thongTinVePhim button {
+    font-family: "SF Text Regular", sans-serif;
+    p,
+    h5,
+    h6 {
+      font-weight: 100;
+      margin-bottom: 0;
+    }
+
+    display: flex;
+    align-items: center;
+    button {
+      transition: all 0.5s;
+    }
+  }
+  .danhSachGhe {
+    width: 850px;
+    max-width: 850px;
+    overflow: auto;
+    margin: auto !important;
+    flex-wrap: nowrap;
+    padding-bottom: 60px;
+    .chuaDat {
+      background-color: #696969;
+    }
+    .MuiButton-contained.Mui-disabled {
+      background-color: #eee;
+      color: black;
+    }
+  }
+
   .titleListChair {
-    // position: relative;
-    // margin: 35px 0;
+    position: relative;
+    margin: 35px 0;
+    color: white;
+    background-color: black;
+    width: 100%;
+    padding: 15px 0;
+    perspective: 100px;
+
     // width: 100%;
     // height: 100px;
     // border: solid 60px #000;
@@ -27,16 +77,67 @@
     // border-radius: 60%/100px 100px 0 0;
     // box-shadow: 2px 2px 30px white;
     &::after {
-      // position: absolute;
-      // display: block;
-      // content: "SCREEN";
+      position: absolute;
+      display: block;
+      content: "";
       //   top: 100%;
+      top: 100%;
       //   z-index: 9;
-      //   width: 100%;
-      //   height: 100%;
-      //   background-color: red;
+      width: 100%;
+      height: 30%;
+      background-color: black;
+      background-image: linear-gradient(
+        to bottom,
+        rgb(238, 238, 238) 0%,
+        #cecdcde8 100%
+      );
+
+      transform-style: preserve-3d;
+      perspective: 100px;
+      transform: rotateX(190deg);
       //   border-radius: 60%/100px 100px 0 0;
       //   top: 0;
     }
+  }
+}
+.chair {
+  width: 38px;
+  height: 25px;
+  background: #696969;
+  border: 2px solid #696969;
+  margin: 2px;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.gheVip {
+    background-color: #d4af37;
+    border-color: #d4af37;
+  }
+  &.daDat {
+    // position: relative;
+    z-index: -1;
+    // cursor: not-allowed;
+    // visibility: hidden;
+    background: #e2e2e2;
+    border-color: #e2e2e2;
+  }
+  &.dangChon {
+    background-color: #fa5238;
+    border-color: #fa5238;
+  }
+  &:hover {
+    background-color: #fa5238;
+    border-color: #fa5238;
+  }
+}
+.moTa {
+  button {
+    position: relative;
+    z-index: -1;
   }
 }
