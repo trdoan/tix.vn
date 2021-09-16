@@ -131,8 +131,9 @@
     border-color: #fa5238;
   }
   &:hover {
-    background-color: #fa5238;
-    border-color: #fa5238;
+    // background-color: #fa5238;
+    // border-color: #fa5238;
+    filter: brightness(0.8);
   }
 }
 .moTa {
@@ -141,3 +142,16 @@
     z-index: -1;
   }
 }
+
+.rowMovie {
+  height: 25px;
+  margin: 2px;
+}
+
+// .modal__booking {
+//   margin: 0;
+//   padding: 0;
+//   .modal__content {
+//     height: 100%;
+//   }
+// }

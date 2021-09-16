@@ -18,6 +18,7 @@ import "./home.scss";
 import ListMovie from "../../components/ListMovie/ListMovie";
 import MobileApp from "../../components/MobileApp/MobileApp";
 import RapChieu from "./../../components/RapChieu/RapChieu";
+import Header from "../../components/Header/Header";
 function HomePage() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
@@ -36,7 +37,7 @@ function HomePage() {
   ) : (
     <>
       {console.log("RENDER HOME PAGE")}
-
+      <Header />
       <Carousel />
       <ListMovie />
       <div className="container">

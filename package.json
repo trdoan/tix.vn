@@ -27,6 +27,7 @@
     "react-toastify": "^7.0.4",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.1.4",
     "web-vitals": "^1.0.1",
     "yarn": "^1.22.11"
   },

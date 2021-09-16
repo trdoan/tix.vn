@@ -18,14 +18,14 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact>
-              <Header />
+              {/* <Header /> */}
               <HomePage />
             </Route>
             <Route path="/dang-nhap" exact>
               <SignInPage />
             </Route>
             <Route path="/dat-ve/:maLichChieu" exact>
-              <Header />
+              {/* <Header /> */}
               <Booking />
             </Route>
             <Route path="/chi-tiet-phim/:maPhim" exact>

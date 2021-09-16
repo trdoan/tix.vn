@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,16 @@ import { Button, Divider } from "@material-ui/core";
 import Error from "./../error/Error";
 import Footer from "./../../components/Footer/Footer.component";
 import clsx from "clsx";
+import Swal from "sweetalert2";
+// import Swal from "sweetalert2/dist/sweetalert2.js";
+
+// import "sweetalert2/src/sweetalert2.scss";
 import "./Booking.scss";
+import {
+  loadingOffAction,
+  loadingOnAction,
+} from "../../store/actions/common.action";
+import Header from "../../components/Header/Header";
 function Booking() {
   // const renderChair = () => {
   //   return <WeekendIcon style={{ color: "orange" }} />;
@@ -43,6 +52,20 @@ function Booking() {
   const handleChoiceChair = (chair) => {
     dispatch(chonGheAction(chair));
   };
+  const handleBooking = () => {
+    dispatch(loadingOnAction());
+    Swal.fire({
+      title: "Error!",
+      text: "Do you want to continue",
+      icon: "error",
+      confirmButtonText: "Cool",
+      // width: "100%",
+      // height: "100%",
+      padding: 0,
+      customClass: { container: "modal__booking", popup: "modal__content" },
+    });
+    dispatch(loadingOffAction(  ));
+  };
   const renderDanhSachGhe = (mangDanhSachGhe) => {
     return mangDanhSachGhe.map((ghe, index) => {
       return (
@@ -71,12 +94,15 @@ function Booking() {
     (ghe) => ghe.loaiGhe == "Vip" && ghe.dangChon == true
   );
   const gheDangChon = gheThuong.concat(gheVip);
+
+  // const [gheDangChon, setGheDangChon] = useState(gheThuong.concat(gheVip));
   return isLoading ? (
     <Loading />
   ) : danhSachGhe == undefined || thongTinPhim == undefined ? (
     <Error />
   ) : (
     <>
+      <Header />
       <div className="datVe">
         <div className="row m-0">
           <div className=" m-0 col-12 col-md-8  overflow-auto">
@@ -92,6 +118,18 @@ function Booking() {
                 <div className="col-2 m-0 d-flex flex-wrap">
                   {renderDanhSachGhe(lsChairRight)}
                 </div>
+                {/* <div className="">
+                  <div className="rowMovie">A</div>
+                  <div className="rowMovie">B</div>
+                  <div className="rowMovie">C</div>
+                  <div className="rowMovie">D</div>
+                  <div className="rowMovie">E</div>
+                  <div className="rowMovie">F</div>
+                  <div className="rowMovie">G</div>
+                  <div className="rowMovie">L</div>
+                  <div className="rowMovie">H</div>
+                  <div className="rowMovie">K</div>
+                </div> */}
               </div>
               <Divider style={{ margin: "10px 0" }} />
               <div
@@ -224,9 +262,13 @@ function Booking() {
 
             <Divider />
             <Button
+              // disabled={gheDangChon.length == 0}
               variant="contained"
               color="primary"
               style={{ width: "100%" }}
+              onClick={() => {
+                handleBooking();
+              }}
             >
               ĐẶT VÉ
             </Button>
