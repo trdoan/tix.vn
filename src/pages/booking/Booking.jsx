@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   chonGheAction,
+  datVeAction,
   layThongTinPhongVe,
 } from "../../store/actions/phongVe.action";
-// import WeekendIcon from "@material-ui/icons/Weekend";
-import WeekendIcon from "@material-ui/icons/Weekend";
+
 import Loading from "./../../components/Loading/Loading.component";
 import { Button, Divider } from "@material-ui/core";
 import Error from "./../error/Error";
@@ -18,10 +18,7 @@ import Swal from "sweetalert2";
 
 // import "sweetalert2/src/sweetalert2.scss";
 import "./Booking.scss";
-import {
-  loadingOffAction,
-  loadingOnAction,
-} from "../../store/actions/common.action";
+
 import Header from "../../components/Header/Header";
 function Booking() {
   // const renderChair = () => {
@@ -30,10 +27,11 @@ function Booking() {
   const { maLichChieu } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
-
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
   useEffect(() => {
     dispatch(layThongTinPhongVe(maLichChieu));
   }, []);
+  const user = useSelector((state) => state.authReducer.user);
   const danhSachGhe = useSelector((state) => state.phongVeReducer.danhSachGhe);
   const thongTinPhim = useSelector(
     (state) => state.phongVeReducer.thongTinPhongVe.thongTinPhim
@@ -53,19 +51,47 @@ function Booking() {
     dispatch(chonGheAction(chair));
   };
   const handleBooking = () => {
-    dispatch(loadingOnAction());
-    Swal.fire({
-      title: "Error!",
-      text: "Do you want to continue",
-      icon: "error",
-      confirmButtonText: "Cool",
-      // width: "100%",
-      // height: "100%",
-      padding: 0,
-      customClass: { container: "modal__booking", popup: "modal__content" },
-    });
-    dispatch(loadingOffAction(  ));
+    if (isLogin === false) {
+      Swal.fire({
+        title: "Vui lòng đăng nhập",
+        // text: "Do you want to continue",
+        icon: "info",
+        confirmButtonText: "Ok",
+        // width: "100%",
+        // height: "100%",
+
+        padding: 0,
+        customClass: {
+          container: "modal__booking",
+          popup: "modal__content",
+          confirmButton: "btnConfirm",
+        },
+      });
+    } else {
+      // call API đặt vé
+      dispatch(datVeAction(maLichChieu, danhSachGhe, user)).then(() => {
+        Swal.fire({
+          title: "Đặt vé thành công",
+
+          icon: "success",
+          confirmButtonText: "Ok",
+
+          padding: 0,
+          customClass: {
+            container: "modal__booking",
+            popup: "modal__content",
+            confirmButton: "btnConfirm",
+          },
+        });
+        document
+          .getElementsByClassName("btnConfirm")[0]
+          .addEventListener("click", () => {
+            dispatch(layThongTinPhongVe(maLichChieu));
+          });
+      });
+    }
   };
+
   const renderDanhSachGhe = (mangDanhSachGhe) => {
     return mangDanhSachGhe.map((ghe, index) => {
       return (
@@ -118,18 +144,6 @@ function Booking() {
                 <div className="col-2 m-0 d-flex flex-wrap">
                   {renderDanhSachGhe(lsChairRight)}
                 </div>
-                {/* <div className="">
-                  <div className="rowMovie">A</div>
-                  <div className="rowMovie">B</div>
-                  <div className="rowMovie">C</div>
-                  <div className="rowMovie">D</div>
-                  <div className="rowMovie">E</div>
-                  <div className="rowMovie">F</div>
-                  <div className="rowMovie">G</div>
-                  <div className="rowMovie">L</div>
-                  <div className="rowMovie">H</div>
-                  <div className="rowMovie">K</div>
-                </div> */}
               </div>
               <Divider style={{ margin: "10px 0" }} />
               <div
