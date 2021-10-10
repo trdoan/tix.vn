@@ -20,10 +20,8 @@ import Swal from "sweetalert2";
 import "./Booking.scss";
 
 import Header from "../../components/Header/Header";
+import { NotificationModal } from "../../components/NotificationModal/NotificationModal";
 function Booking() {
-  // const renderChair = () => {
-  //   return <WeekendIcon style={{ color: "orange" }} />;
-  // };
   const { maLichChieu } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.commonReducer.isLoading);
@@ -32,6 +30,7 @@ function Booking() {
     dispatch(layThongTinPhongVe(maLichChieu));
   }, []);
   const user = useSelector((state) => state.authReducer.user);
+
   const danhSachGhe = useSelector((state) => state.phongVeReducer.danhSachGhe);
   const thongTinPhim = useSelector(
     (state) => state.phongVeReducer.thongTinPhongVe.thongTinPhim
@@ -52,43 +51,10 @@ function Booking() {
   };
   const handleBooking = () => {
     if (isLogin === false) {
-      Swal.fire({
-        title: "Vui lòng đăng nhập",
-        // text: "Do you want to continue",
-        icon: "info",
-        confirmButtonText: "Ok",
-        // width: "100%",
-        // height: "100%",
-
-        padding: 0,
-        customClass: {
-          container: "modal__booking",
-          popup: "modal__content",
-          confirmButton: "btnConfirm",
-        },
-      });
+      NotificationModal("info", "Vui lòng đăng nhập");
     } else {
       // call API đặt vé
-      dispatch(datVeAction(maLichChieu, danhSachGhe, user)).then(() => {
-        Swal.fire({
-          title: "Đặt vé thành công",
-
-          icon: "success",
-          confirmButtonText: "Ok",
-
-          padding: 0,
-          customClass: {
-            container: "modal__booking",
-            popup: "modal__content",
-            confirmButton: "btnConfirm",
-          },
-        });
-        document
-          .getElementsByClassName("btnConfirm")[0]
-          .addEventListener("click", () => {
-            dispatch(layThongTinPhongVe(maLichChieu));
-          });
-      });
+      dispatch(datVeAction(maLichChieu, danhSachGhe, user));
     }
   };
 

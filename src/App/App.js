@@ -10,6 +10,7 @@ import Booking from "../pages/booking/Booking";
 import ErrorPage from "../pages/error/Error.jsx";
 import MovieDetail from "../pages/movieDetail/MovieDetail";
 import Modal from "../components/Modal/Modal.component";
+import AdminPage from "../pages/admin/admin.page";
 
 function App() {
   return (
@@ -38,7 +39,12 @@ function App() {
             <Route path="/booking" exact>
               <Booking />
             </Route>
+            <Route path="/admin">
+              <Header />
+              <AdminPage />
+            </Route>
             <Route path="">
+              {/* <Header /> */}
               <ErrorPage />
             </Route>
           </Switch>

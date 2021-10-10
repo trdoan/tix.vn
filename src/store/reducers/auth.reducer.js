@@ -10,6 +10,7 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN:
       state.user = payload;
       state.isLogin = true;
+      localStorage.setItem("user", JSON.stringify(payload));
       return { ...state };
     case LOGOUT:
       state.user = {};

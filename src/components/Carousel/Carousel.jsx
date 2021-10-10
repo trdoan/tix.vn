@@ -9,9 +9,11 @@ import { modalOnAction } from "../../store/actions/common.action";
 import "./Carousel.scss";
 import { layThongTinLichChieuPhim } from "../../store/actions/rapChieu.action";
 import { useHistory } from "react-router-dom";
+import { NotificationModal } from "../NotificationModal/NotificationModal";
 // let danhSachCumRap = [];
 function Carousel() {
   const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
   const listMovie = useSelector((state) => state.movieReducer.listMovie);
   const [phim, setPhim] = useState("Phim");
   const [heThongRap, setHeThongRap] = useState("Hệ thống rạp");
@@ -39,8 +41,7 @@ function Carousel() {
 
   const hangleRenderCarousel = () => {
     const getId = (url) => {
-      const regExp =
-        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
       const match = url.match(regExp);
 
       return match && match[2].length === 11 ? match[2] : null;
@@ -224,7 +225,11 @@ function Carousel() {
           <button
             className="muaVePhim"
             onClick={() => {
-              history.push(`/dat-ve/${maLichChieu}`);
+              if (isLogin) {
+                history.push(`/dat-ve/${maLichChieu}`);
+              } else {
+                NotificationModal("info", "Vui lòng đăng nhập");
+              }
             }}
             disabled={
               phim !== "Phim" &&
