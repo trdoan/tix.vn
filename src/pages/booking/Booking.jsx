@@ -80,10 +80,10 @@ function Booking() {
     });
   };
   const gheThuong = danhSachGhe?.filter(
-    (ghe) => ghe.loaiGhe == "Thuong" && ghe.dangChon == true
+    (ghe) => ghe.loaiGhe === "Thuong" && ghe.dangChon === true
   );
   const gheVip = danhSachGhe?.filter(
-    (ghe) => ghe.loaiGhe == "Vip" && ghe.dangChon == true
+    (ghe) => ghe.loaiGhe === "Vip" && ghe.dangChon === true
   );
   const gheDangChon = gheThuong.concat(gheVip);
 
