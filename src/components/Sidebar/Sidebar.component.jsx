@@ -93,7 +93,8 @@ export default function Sidebar() {
                 </Button>
               </ListItem>
               <ListItem>
-                <a href="#">Lịch Chiếu</a>
+                {/* <a href="#">Lịch Chiếu</a> */}
+                <Link to="#">Cụm rạp</Link>
               </ListItem>
               <ListItem>
                 <Link to="#">Cụm rạp</Link>

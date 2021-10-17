@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hinh from "./../../assets/img/404.jpg";
+
 import "./Error.scss";
 function ErrorPage() {
   return (

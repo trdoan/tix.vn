@@ -1,24 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 //
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import EnhancedTable from "../../components/TableData/TableData";
 
-// TablePaginationActions.propTypes = {
-//   count: PropTypes.number.isRequired,
-//   onPageChange: PropTypes.func.isRequired,
-//   page: PropTypes.number.isRequired,
-//   rowsPerPage: PropTypes.number.isRequired,
-// };
-// const handleLastPageButtonClick = (event) => {
-//   onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-// };
 function AdminPage() {
   //   const user = useSelector((state) => state.authReducer.user);
   const user = JSON.parse(localStorage.getItem("user"));
@@ -32,17 +20,6 @@ function AdminPage() {
     setOpen(false);
   };
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
   return (
     <div
       style={{
@@ -87,7 +64,6 @@ function AdminPage() {
           </div>
           <div className="col-md-9 col-sm-12">
             <h5>LỊCH SỬ ĐẶT VÉ</h5>
-            <EnhancedTable />
           </div>
         </div>
       </div>

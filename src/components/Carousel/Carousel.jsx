@@ -10,6 +10,7 @@ import "./Carousel.scss";
 import { layThongTinLichChieuPhim } from "../../store/actions/rapChieu.action";
 import { useHistory } from "react-router-dom";
 import { NotificationModal } from "../NotificationModal/NotificationModal";
+import { getIdFromYoutube } from "../../helper/URL.helper";
 // let danhSachCumRap = [];
 function Carousel() {
   const dispatch = useDispatch();
@@ -40,14 +41,8 @@ function Carousel() {
   };
 
   const hangleRenderCarousel = () => {
-    const getId = (url) => {
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-      const match = url.match(regExp);
-
-      return match && match[2].length === 11 ? match[2] : null;
-    };
     return data.map((phim, index) => {
-      let videoId = getId(phim.linkTrailer);
+      let videoId = getIdFromYoutube(phim.linkTrailer);
       return (
         <div className="itemCarousel col-12" key={index}>
           <img src={phim.img} alt="" className="imgCarousel img-fluid" />
@@ -82,8 +77,6 @@ function Carousel() {
         setCumRap(data.tenCumRap);
         setSuatChieu(data.lichChieuPhim);
         setSuatChieuDangChon("Suất chiếu");
-
-        // console.log("lichchieu:", data.lichChieuPhim);
         break;
       case "CHON_SUAT_CHIEU":
         console.log(data.maLichChieu);
@@ -105,7 +98,6 @@ function Carousel() {
         {hangleRenderCarousel()}
       </Slider>
       <div className="homeTools d-flex align-items-center">
-        {/* phim */}
         <div className="my-dropdown col-3">
           <button
             className="btn dropdown-toggle"
@@ -132,7 +124,7 @@ function Carousel() {
             })}
           </div>
         </div>
-        {/* hệ thống rạp */}
+
         <div className="my-dropdown col-3">
           <button
             className="btn dropdown-toggle"
@@ -156,11 +148,10 @@ function Carousel() {
                   {heThongRap.tenHeThongRap}
                 </button>
               );
-              // console.log(heThongRap);
             })}
           </div>
         </div>
-        {/* rạp */}
+
         <div className="my-dropdown col-2">
           <button
             className="btn dropdown-toggle"
@@ -187,7 +178,7 @@ function Carousel() {
             })}
           </div>
         </div>
-        {/* suất chiếu */}
+
         <div className="my-dropdown col-2">
           <button
             className="btn dropdown-toggle"
@@ -198,7 +189,6 @@ function Carousel() {
             aria-expanded="false"
           >
             {suatChieuDangChon}
-            {/* {suatChieu == [] ? suatChieu : "Suất chiếu"} */}
           </button>
           <div className="dropdown-menu fade" aria-labelledby="dropdownMenu4">
             {suatChieu?.map((suatChieuItem, index) => {
@@ -220,7 +210,7 @@ function Carousel() {
             })}
           </div>
         </div>
-        {/* mua vé */}
+
         <div className="my-dropdown col-2">
           <button
             className="muaVePhim"

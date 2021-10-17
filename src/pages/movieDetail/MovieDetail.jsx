@@ -9,8 +9,6 @@ import dateFormat from "dateformat";
 
 import "./MovieDetail.scss";
 
-import RapChieu from "../../components/RapChieu/RapChieu";
-
 function MovieDetail() {
   const { maPhim } = useParams();
   const dispatch = useDispatch();
@@ -60,9 +58,7 @@ function MovieDetail() {
                       Trailer
                     </a>
                   </button>
-                  <button className="btn ">
-                    <a href="#">Đặt vé</a>
-                  </button>
+                  <button className="btn ">{/* <a>Đặt vé</a> */}</button>
                 </div>
               </div>
             </div>

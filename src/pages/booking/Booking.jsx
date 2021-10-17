@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ import { Button, Divider } from "@material-ui/core";
 import Error from "./../error/Error";
 import Footer from "./../../components/Footer/Footer.component";
 import clsx from "clsx";
-import Swal from "sweetalert2";
+
 // import Swal from "sweetalert2/dist/sweetalert2.js";
 
 // import "sweetalert2/src/sweetalert2.scss";
@@ -28,7 +28,7 @@ function Booking() {
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   useEffect(() => {
     dispatch(layThongTinPhongVe(maLichChieu));
-  }, []);
+  }, [maLichChieu, dispatch]);
   const user = useSelector((state) => state.authReducer.user);
 
   const danhSachGhe = useSelector((state) => state.phongVeReducer.danhSachGhe);
@@ -36,11 +36,11 @@ function Booking() {
     (state) => state.phongVeReducer.thongTinPhongVe.thongTinPhim
   );
   const lsChairLeft = danhSachGhe?.filter(
-    (ghe) => ghe.tenGhe % 16 == 1 || ghe.tenGhe % 16 == 2
+    (ghe) => ghe.tenGhe % 16 === 1 || ghe.tenGhe % 16 === 2
   );
 
   const lsChairRight = danhSachGhe?.filter(
-    (ghe) => ghe.tenGhe % 16 == 0 || ghe.tenGhe % 16 == 15
+    (ghe) => ghe.tenGhe % 16 === 0 || ghe.tenGhe % 16 === 15
   );
 
   const lsChairCenter = danhSachGhe?.filter(
@@ -66,8 +66,8 @@ function Booking() {
           disabled={ghe.daDat}
           className={clsx({
             chair: true,
-            gheVip: ghe.loaiGhe == "Vip",
-            gheThuong: ghe.loaiGhe == "Thuong",
+            gheVip: ghe.loaiGhe === "Vip",
+            gheThuong: ghe.loaiGhe === "Thuong",
             daDat: ghe.daDat,
             dangChon: ghe.dangChon,
           })}
@@ -90,7 +90,7 @@ function Booking() {
   // const [gheDangChon, setGheDangChon] = useState(gheThuong.concat(gheVip));
   return isLoading ? (
     <Loading />
-  ) : danhSachGhe == undefined || thongTinPhim == undefined ? (
+  ) : danhSachGhe === undefined || thongTinPhim === undefined ? (
     <Error />
   ) : (
     <>
@@ -170,14 +170,14 @@ function Booking() {
               </div>
               <div className="d-flex flex-wrap">
                 {danhSachGhe.map((ghe, index) => {
-                  return ghe.dangChon == true && ghe.loaiGhe == "Thuong" ? (
+                  return ghe.dangChon === true && ghe.loaiGhe === "Thuong" ? (
                     <button
                       key={index}
                       disabled={ghe.daDat}
                       className={clsx({
                         chair: true,
                         // gheVip: ghe.loaiGhe == "Vip",
-                        gheThuong: ghe.loaiGhe == "Thuong",
+                        gheThuong: ghe.loaiGhe === "Thuong",
                         // daDat: ghe.daDat,
                         // dangChon: ghe.dangChon,
                       })}
@@ -205,13 +205,13 @@ function Booking() {
 
               <div className="d-flex flex-wrap">
                 {danhSachGhe.map((ghe, index) => {
-                  return ghe.dangChon == true && ghe.loaiGhe == "Vip" ? (
+                  return ghe.dangChon === true && ghe.loaiGhe === "Vip" ? (
                     <button
                       key={index}
                       disabled={ghe.daDat}
                       className={clsx({
                         chair: true,
-                        gheVip: ghe.loaiGhe == "Vip",
+                        gheVip: ghe.loaiGhe === "Vip",
                         // gheThuong: ghe.loaiGhe == "Thuong",
                         // daDat: ghe.daDat,
                         // dangChon: ghe.dangChon,

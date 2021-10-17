@@ -5,7 +5,6 @@ import {
   LAY_THONG_TIN_LICH_CHIEU_RAP,
   LAY_TT_LICH_CHIEU_PHIM,
 } from "../constants/rapChieu.const";
-import { loadingOffAction, loadingOnAction } from "./common.action";
 
 export const getListHeThongRapAction = () => {
   return async (dispatch) => {

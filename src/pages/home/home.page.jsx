@@ -17,7 +17,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import "./home.scss";
 import ListMovie from "../../components/ListMovie/ListMovie";
 import MobileApp from "../../components/MobileApp/MobileApp";
-import RapChieu from "./../../components/RapChieu/RapChieu";
+
 import Header from "../../components/Header/Header";
 function HomePage() {
   const dispatch = useDispatch();
@@ -40,9 +40,7 @@ function HomePage() {
       <Header />
       <Carousel />
       <ListMovie />
-      <div className="container">
-        <RapChieu />
-      </div>
+
       <MobileApp />
       <Footer />
       {isModal ? (

@@ -1,7 +1,7 @@
 import React from "react";
 import "react-modal-video/scss/modal-video.scss";
 import { useState } from "react";
-import ReactDOM from "react-dom";
+
 import ModalVideo from "react-modal-video";
 function Modal() {
   const [isOpen, setOpen] = useState(false);
