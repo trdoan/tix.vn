@@ -1,7 +1,8 @@
 import axios from "axios";
-// import { reLogin } from "../../pages/dang-nhap/dang-nhap.page";
 
 import { LOGIN, LOGOUT } from "../constants/auth.const";
+
+import { getListMovieAction } from "./movie.action";
 
 export const loginAction = (user, history) => {
   return async (dispatch) => {
@@ -23,6 +24,9 @@ export const loginAction = (user, history) => {
   };
 };
 export const logoutAction = (history) => {
-  history.push("/");
-  return { type: LOGOUT };
+  return (dispatch) => {
+    history.push("/");
+    dispatch(getListMovieAction());
+    return { type: LOGOUT };
+  };
 };

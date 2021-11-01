@@ -3,13 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import MenuIcon from "@material-ui/icons/Menu";
-// logo
-// import logo from "../../img/11.png";
-// css
-
 import { Link, useHistory } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar.component";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +10,7 @@ import { logoutAction } from "../../store/actions/auth.action";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import "./Header.scss";
-// import SignInPage from "../../pages/dang-nhap/dang-nhap.page";
+import useWindowSize from "../../helper/hook/useWindowSize";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,16 +33,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const dispatch = useDispatch();
+  const [width] = useWindowSize();
   const classes = useStyles();
   const history = useHistory();
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const user = useSelector((state) => state.authReducer.user);
+
   const handleClick = () => {
     document
       .getElementsByClassName("profileWrapper")[0]
       .classList.toggle("d-block");
   };
-
   return (
     <div className={classes.root + " header"}>
       <AppBar position="static" className="header">
@@ -147,7 +141,7 @@ export default function Header() {
             </Link>
           )}
 
-          <Sidebar />
+          {width <= 767 && <Sidebar />}
         </Toolbar>
       </AppBar>
     </div>

@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "./../../../node_modules/slick-carousel/slick/slick-theme.css";
 import "./ListMovie.scss";
+
 function ListMovie() {
   const settings = {
     dots: false,
@@ -38,15 +39,16 @@ function ListMovie() {
   const listMovie2 = useSelector((state) => state.movieReducer.listMovie2);
 
   // render danh sách phim
-  const handleRenderDanhSachPhim = (loaiChieu = true) => {
-    if (loaiChieu) {
+  const handleRenderDanhSachPhim = (loaiChieu) => {
+    if (loaiChieu === true) {
       return listMovie.map((movie, index) => {
-        return <MovieCard key={index} movie={movie} loaiChieu={true} />;
+        return <MovieCard key={index} movie={movie} loaiChieu={loaiChieu} />;
+      });
+    } else {
+      return listMovie2.map((movie, index) => {
+        return <MovieCard key={index} movie={movie} loaiChieu={loaiChieu} />;
       });
     }
-    return listMovie2.map((movie, index) => {
-      return <MovieCard key={index} movie={movie} loaiChieu={false} />;
-    });
   };
 
   return (
@@ -87,10 +89,7 @@ function ListMovie() {
             role="tabpanel"
             aria-labelledby="home-tab"
           >
-            <Slider {...settings}>{handleRenderDanhSachPhim()}</Slider>
-            <div className="movieCardMobile">
-              {handleRenderDanhSachPhim(true)}
-            </div>
+            <Slider {...settings}>{handleRenderDanhSachPhim(true)}</Slider>
           </div>
           <div
             className="tab-pane fade"
@@ -99,9 +98,9 @@ function ListMovie() {
             aria-labelledby="profile-tab"
           >
             <Slider {...settings}>{handleRenderDanhSachPhim(false)}</Slider>
-            <div className="movieCardMobile">
+            {/* <div className="movieCardMobile">
               {handleRenderDanhSachPhim(false)}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

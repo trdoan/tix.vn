@@ -6,12 +6,13 @@ import { data } from "./data";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import { modalOnAction } from "../../store/actions/common.action";
-import "./Carousel.scss";
+
 import { layThongTinLichChieuPhim } from "../../store/actions/rapChieu.action";
 import { useHistory } from "react-router-dom";
 import { NotificationModal } from "../NotificationModal/NotificationModal";
 import { getIdFromYoutube } from "../../helper/URL.helper";
-// let danhSachCumRap = [];
+import useWindowSize from "../../helper/hook/useWindowSize";
+
 function Carousel() {
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.authReducer.isLogin);
@@ -26,8 +27,9 @@ function Carousel() {
   const listHeThongRapChieuPhim = useSelector(
     (state) => state.rapChieuReducer.cumRapChieuPhim.heThongRapChieu
   );
+  const [width] = useWindowSize();
   const history = useHistory();
-  // const [suatChieu, setSuatChieu] = useState([]);
+
   const setting = {
     dots: true,
     infinite: true,
@@ -46,6 +48,7 @@ function Carousel() {
       return (
         <div className="itemCarousel col-12" key={index}>
           <img src={phim.img} alt="" className="imgCarousel img-fluid" />
+
           <div
             className="trailerMovie"
             onClick={() => dispatch(modalOnAction(videoId))}
@@ -79,7 +82,6 @@ function Carousel() {
         setSuatChieuDangChon("Suất chiếu");
         break;
       case "CHON_SUAT_CHIEU":
-        console.log(data.maLichChieu);
         setMaLichChieu(data.maLichChieu);
         setSuatChieuDangChon(
           data.tenRap +
@@ -97,151 +99,155 @@ function Carousel() {
       <Slider {...setting} className="carousel">
         {hangleRenderCarousel()}
       </Slider>
-      <div className="homeTools d-flex align-items-center">
-        <div className="my-dropdown col-3">
-          <button
-            className="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenu2"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {phim}
-          </button>
-          <div className="dropdown-menu fade" aria-labelledby="dropdownMenu2">
-            {listMovie?.map((phim, index) => {
-              return (
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  key={index}
-                  onClick={() => handleClick("CHON_PHIM", phim)}
-                >
-                  {phim.tenPhim}
-                </button>
-              );
-            })}
+      {width >= 992 && (
+        <div className="homeTools d-flex align-items-center">
+          <div className="my-dropdown col-3">
+            <button
+              className="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenu2"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {phim}
+            </button>
+            <div className="dropdown-menu fade" aria-labelledby="dropdownMenu2">
+              {listMovie?.map((phim, index) => {
+                return (
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    key={index}
+                    onClick={() => handleClick("CHON_PHIM", phim)}
+                  >
+                    {phim.tenPhim}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className="my-dropdown col-3">
-          <button
-            className="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenu3"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {heThongRap}
-          </button>
-          <div className="dropdown-menu fade" aria-labelledby="dropdownMenu3">
-            {listHeThongRapChieuPhim?.map((heThongRap, index) => {
-              return (
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  key={index}
-                  onClick={() => handleClick("CHON_HT_RAP", heThongRap)}
-                >
-                  {heThongRap.tenHeThongRap}
-                </button>
-              );
-            })}
+          <div className="my-dropdown col-3">
+            <button
+              className="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenu3"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {heThongRap}
+            </button>
+            <div className="dropdown-menu fade" aria-labelledby="dropdownMenu3">
+              {listHeThongRapChieuPhim?.map((heThongRap, index) => {
+                return (
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    key={index}
+                    onClick={() => handleClick("CHON_HT_RAP", heThongRap)}
+                  >
+                    {heThongRap.tenHeThongRap}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className="my-dropdown col-2">
-          <button
-            className="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenu3"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {cumRap}
-          </button>
-          <div className="dropdown-menu fade" aria-labelledby="dropdownMenu3">
-            {rap?.map((cumRap, index) => {
-              return (
-                <button
-                  key={index}
-                  className="dropdown-item"
-                  type="button"
-                  onClick={() => handleClick("CHON_CUM_RAP", cumRap)}
-                >
-                  {cumRap.tenCumRap}
-                </button>
-              );
-            })}
+          <div className="my-dropdown col-2">
+            <button
+              className="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenu3"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {cumRap}
+            </button>
+            <div className="dropdown-menu fade" aria-labelledby="dropdownMenu3">
+              {rap?.map((cumRap, index) => {
+                return (
+                  <button
+                    key={index}
+                    className="dropdown-item"
+                    type="button"
+                    onClick={() => handleClick("CHON_CUM_RAP", cumRap)}
+                  >
+                    {cumRap.tenCumRap}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className="my-dropdown col-2">
-          <button
-            className="btn dropdown-toggle"
-            type="button"
-            id="dropdownMenu4"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            {suatChieuDangChon}
-          </button>
-          <div className="dropdown-menu fade" aria-labelledby="dropdownMenu4">
-            {suatChieu?.map((suatChieuItem, index) => {
-              return (
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  key={index}
-                  onClick={() => handleClick("CHON_SUAT_CHIEU", suatChieuItem)}
-                >
-                  {suatChieuItem.tenRap +
-                    " - lúc " +
-                    dateFormat(
-                      suatChieuItem.ngayChieuGioChieu,
-                      "hh:mm - ngày dd/mm/yyyy"
-                    )}
-                </button>
-              );
-            })}
+          <div className="my-dropdown col-2">
+            <button
+              className="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenu4"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {suatChieuDangChon}
+            </button>
+            <div className="dropdown-menu fade" aria-labelledby="dropdownMenu4">
+              {suatChieu?.map((suatChieuItem, index) => {
+                return (
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    key={index}
+                    onClick={() =>
+                      handleClick("CHON_SUAT_CHIEU", suatChieuItem)
+                    }
+                  >
+                    {suatChieuItem.tenRap +
+                      " - lúc " +
+                      dateFormat(
+                        suatChieuItem.ngayChieuGioChieu,
+                        "hh:mm - ngày dd/mm/yyyy"
+                      )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className="my-dropdown col-2">
-          <button
-            className="muaVePhim"
-            onClick={() => {
-              if (isLogin) {
-                history.push(`/dat-ve/${maLichChieu}`);
-              } else {
-                NotificationModal("info", "Vui lòng đăng nhập");
+          <div className="my-dropdown col-2">
+            <button
+              className="muaVePhim"
+              onClick={() => {
+                if (isLogin) {
+                  history.push(`/dat-ve/${maLichChieu}`);
+                } else {
+                  NotificationModal("info", "Vui lòng đăng nhập");
+                }
+              }}
+              disabled={
+                phim !== "Phim" &&
+                heThongRap !== "Hệ thống rạp" &&
+                cumRap !== "Rạp" &&
+                suatChieuDangChon !== "Suất chiếu"
+                  ? false
+                  : true
               }
-            }}
-            disabled={
-              phim !== "Phim" &&
-              heThongRap !== "Hệ thống rạp" &&
-              cumRap !== "Rạp" &&
-              suatChieuDangChon !== "Suất chiếu"
-                ? false
-                : true
-            }
-            style={
-              phim !== "Phim" &&
-              heThongRap !== "Hệ thống rạp" &&
-              cumRap !== "Rạp" &&
-              suatChieuDangChon !== "Suất chiếu"
-                ? { backgroundColor: "#fa5238" }
-                : null
-            }
-          >
-            mua vé ngay
-          </button>
+              style={
+                phim !== "Phim" &&
+                heThongRap !== "Hệ thống rạp" &&
+                cumRap !== "Rạp" &&
+                suatChieuDangChon !== "Suất chiếu"
+                  ? { backgroundColor: "#fa5238" }
+                  : null
+              }
+            >
+              mua vé ngay
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -12,6 +12,7 @@ import { modalOnAction } from "../../store/actions/common.action";
 import { useHistory } from "react-router-dom";
 import { convertHttpsURL, getIdFromYoutube } from "../../helper/URL.helper";
 import { rateMovie } from "../../helper/Movie.helper";
+import useWindowSize from "../../helper/hook/useWindowSize";
 
 const useStyles = makeStyles({
   root: {
@@ -32,10 +33,12 @@ const useStyles = makeStyles({
 });
 
 export function MovieCard(props) {
+  const [width] = useWindowSize();
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
   const { maPhim, tenPhim, danhGia, hinhAnh, trailer } = props.movie;
+  const { loaiChieu } = props;
   const videoId = getIdFromYoutube(
     trailer == null ? "https://www.youtube.com/watch?v=j8U06veqxdU" : trailer
   );
@@ -56,39 +59,52 @@ export function MovieCard(props) {
 
   return (
     <>
-      <Card className={classes.root + " cardItem"}>
+      <Card
+        className={
+          loaiChieu ? `cardItem ${classes.root}` : `cardItem-2 ${classes.root}`
+        }
+      >
         <CardActionArea>
           <CardMedia
             className={classes.media + " imgCardMedia"}
             image={convertHttpsURL(hinhAnh)}
             style={{ position: "relative" }}
           >
-            <div
-              className="trailerMovie"
-              onClick={() => dispatch(modalOnAction(videoId))}
-            ></div>
+            {width >= 1200 && (
+              <div
+                className="trailerMovie"
+                onClick={() => dispatch(modalOnAction(videoId))}
+              ></div>
+            )}
           </CardMedia>
 
           <CardContent
             className="cardContent"
-            onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+            onClick={
+              loaiChieu ? () => history.push(`/chi-tiet-phim/${maPhim}`) : null
+            }
           >
             <p className="titleMovie">
-              <span className="typeMovie">C18</span> {tenPhim}
+              <span className={loaiChieu ? "typeMovie" : "typeMovie-2"}>
+                {loaiChieu === true ? "C18" : "P"}
+              </span>{" "}
+              {tenPhim}
             </p>
           </CardContent>
         </CardActionArea>
+        {width >= 1200 && loaiChieu && (
+          <div className="datVe">
+            <Button
+              color="primary"
+              variant="contained"
+              style={{ width: "100%" }}
+              onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
+            >
+              Đặt vé
+            </Button>
+          </div>
+        )}
 
-        <div className="datVe">
-          <Button
-            color="primary"
-            variant="contained"
-            style={{ width: "100%" }}
-            onClick={() => history.push(`/chi-tiet-phim/${maPhim}`)}
-          >
-            Đặt vé
-          </Button>
-        </div>
         <div className="txtPoint ">
           <div className="danhGia">{danhGia}</div>
           <div className="numberStar d-flex justify-content-center">

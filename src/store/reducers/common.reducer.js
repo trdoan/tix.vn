@@ -10,6 +10,7 @@ const initialState = {
   isModal: false,
   videoModalId: "",
 };
+
 export const commonReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
@@ -19,6 +20,7 @@ export const commonReducer = (state = initialState, action) => {
     case LOADING_OFF:
       state.isLoading = false;
       return { ...state };
+
     case MODAL_ON:
       state.videoModalId = payload;
       state.isModal = true;

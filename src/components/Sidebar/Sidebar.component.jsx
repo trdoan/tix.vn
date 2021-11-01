@@ -10,6 +10,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Typography } from "@material-ui/core";
 import { logoutAction } from "../../store/actions/auth.action";
+
 const useStyles = makeStyles({
   list: {
     width: "70vw",
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Sidebar() {
+function Sidebar() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -38,7 +39,10 @@ export default function Sidebar() {
 
     setState({ ...state, [anchor]: open });
   };
-
+  const handleLogout = () => {
+    dispatch(logoutAction(history));
+    // dispatch(loadingOnAction());
+  };
   return (
     <div className="buttonShowSidebar" style={{ marginLeft: "auto" }}>
       {console.log("render Siderbar")}
@@ -107,7 +111,7 @@ export default function Sidebar() {
               </ListItem>
               {isLogin ? (
                 <ListItem>
-                  <Link to="/" onClick={() => dispatch(logoutAction(history))}>
+                  <Link to="/" onClick={() => handleLogout()}>
                     Đăng Xuất
                   </Link>
                 </ListItem>
@@ -119,3 +123,4 @@ export default function Sidebar() {
     </div>
   );
 }
+export default Sidebar;

@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 
 import TextField from "@material-ui/core/TextField";
-
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 // import Link from "@material-ui/core/Link";
 
 import { useHistory } from "react-router-dom";
@@ -69,6 +70,12 @@ export default function SignInPage() {
             name="matKhau"
             onChange={(e) => handleChangeInput(e)}
           />{" "}
+          <div className="" style={{ textAlign: "left" }}>
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Duy trì đăng nhập"
+            />
+          </div>
           <div
             id="notiMessage"
             className="text-danger"

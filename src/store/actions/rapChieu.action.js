@@ -67,7 +67,6 @@ export const layThongTinLichChieuPhim = (maPhim) => {
       });
 
       dispatch({ type: LAY_TT_LICH_CHIEU_PHIM, payload: res.data });
-      console.log("resdata", res.data);
     } catch (error) {
       console.log(error);
     }
