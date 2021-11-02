@@ -2,7 +2,6 @@
 ## Status: Running
 ### How can use
 ```git
-
 // run terminal
 npm i
 npm start
